@@ -16,11 +16,23 @@ knitr::opts_chunk$set(
 
 # Setup
 
-For installation from GitHub, run
-```{r setup}
+For installation from GitHub, run the code below. 
+Since the package repository is private at the moment, 
+you need the `auth_token` argument.
+
+```{r setup, message=FALSE}
 library(devtools)
-install_github("IMSBComputationalBiology/animalBreedingProj", subdir="animalBreeding",
+install_github("IMSBComputationalBiology/animalBreedingProj", 
+               subdir="animalBreeding",
                auth_token = "f6024685998b779a9db258994a7b4e44468b754c")
+library(animalBreeding)
 ```
 
-Alternatively
+# Usage
+
+To reproduce Table 3.12 from the "Animal production and breeding" textbook, run
+
+```{r}
+cal
+
+```
