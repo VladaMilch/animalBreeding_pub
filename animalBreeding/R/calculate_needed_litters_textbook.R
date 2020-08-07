@@ -43,5 +43,6 @@ calculate_needed_litters_textbook <- function(
             abs(quantile_of_sum(nn)-n_needed)
           },
         lower = 1, upper = n_needed)
-    return(neededL[1])
+    res = round(neededL[[1]]) # WARNING! mathematically does not guarantee P >= condifence_p
+    return(res)
 }

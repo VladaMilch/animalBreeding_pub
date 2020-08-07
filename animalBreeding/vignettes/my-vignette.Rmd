@@ -18,12 +18,15 @@ knitr::opts_chunk$set(
 
 For installation, run the code below.
 
-```{r setup, message=FALSE}
+```{r, eval = FALSE}
 library(devtools)
-install_github("IMSBComputationalBiology/animalBreedingProj", 
+install_github("IMSBComputationalBiology/animalBreedingProj",
                subdir="animalBreeding",
-               auth_token = "f6024685998b779a9db258994a7b4e44468b754c", 
+               auth_token = "f6024685998b779a9db258994a7b4e44468b754c",
                force=TRUE)
+```
+
+```{r setup, message=FALSE, comment=FALSE, cache=FALSE, results=FALSE}
 library(animalBreeding)
 ```
 
@@ -52,8 +55,9 @@ Note that the calculation above uses values for the quantiles of the Gaussian
 distribution. Quite likely, the authors of the textbook used a different 
 approximation from the one I use now. 
 
-Therefore, I did not round the value above to the smallest integer that 
-guarantees $P\geq 0.975$ - in the case above that would be 11.
+Warning: The smallest integer that 
+guarantees $P\geq 0.975$ would be 11 in the case above, but in agreement with 
+what the authors did, I just rounded the values.
 
 ## Reproducing Table 3.13
 
@@ -97,4 +101,20 @@ description.
 1 - pbinom(q = 9, size = 109, prob = 0.15)
 
 # thus, 110 is the minimal required number of breedings to have P>0.975
+```
+
+
+## Wrapper
+
+To calculate the number of breedings directly from the required number of 
+offsprings,
+run the following:
+
+```{r}
+calculate_needed_breedings(
+    condifence_p = 0.95, 
+    effective_fertility_p = 0.2, 
+    n_needed = 25, 
+    litter_mean = 4, 
+    litter_sd = 2.5 )
 ```

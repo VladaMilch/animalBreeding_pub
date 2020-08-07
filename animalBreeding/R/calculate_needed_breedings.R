@@ -30,7 +30,8 @@ calculate_needed_breedings <- function(
     n_needed,
     litter_mean,
     litter_sd = 2.5,
-    method
+    method = "textbook",
+    calculation_type = "textbook_exact"
 ){
     # method reflects one of the available models
     stopifnot(method %in% c("textbook"))
@@ -45,7 +46,8 @@ calculate_needed_breedings <- function(
         nbre <- calculate_needed_breedings_textbook(
             condifence_p=condifence_p1,
             effective_fertility_p=effective_fertility_p,
-            n_litters=nlit
+            n_litters=nlit,
+            calculation_type = calculation_type
         )
         return(nbre)
     }
