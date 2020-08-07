@@ -25,6 +25,7 @@
 #'     effective_fertility_p=0.6,
 #'     n_litters=10)
 #'
+#' @export
 calculate_needed_litters_textbook <- function(
     condifence_p,
     litter_mean,
