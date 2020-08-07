@@ -16,9 +16,7 @@ knitr::opts_chunk$set(
 
 # Setup
 
-For installation from GitHub, run the code below. 
-Since the package repository is private at the moment, 
-you need the `auth_token` argument.
+For installation, run the code below.
 
 ```{r setup, message=FALSE}
 library(devtools)
@@ -29,12 +27,18 @@ install_github("IMSBComputationalBiology/animalBreedingProj",
 library(animalBreeding)
 ```
 
+At the moment, the package repository is private, therefore
+the installation will only work with the `auth_token` argument. 
+Later it will be replaced.
+
 # Usage
+
+## Reproducing Table 3.12
 
 To reproduce Table 3.12 from the "Animal production and breeding" textbook, 
 use the `calculate_needed_litters()` function. For instance, the number of 
-litters required to give 97.5/% probability of achieving 25 animals, with the 
-average litter size being 4, is 10.
+litters required to give 97.5% probability of achieving 25 animals, with the 
+average litter size being 4, is 10.  
 
 ```{r}
 calculate_needed_litters_textbook(
@@ -44,12 +48,20 @@ calculate_needed_litters_textbook(
     n_needed = 25)
 ```
 
-To reproduce Table 3.13 from the "Animal production and breeding" textbook, 
-use the `calculate_needed_breedings()` function. For instance, the number of 
-breedings required to give 97.5/% probability of achieving more than 10 litters, 
-with the effective fertility being 15 percent, is 119 (according to the 
-textbook). 
+Note that the calculation above uses values for the quantiles of the Gaussian 
+distribution. Quite likely, the authors of the textbook used a different 
+approximation from the one I use now. 
 
+Therefore, I did not round the value above to the smallest integer that 
+guarantees $P\geq 0.975$ - in the case above that would be 11.
+
+## Reproducing Table 3.13
+
+To reproduce Table 3.13 from the "Animal production and breeding" textbook, use 
+the `calculate_needed_breedings()` function. For instance, the number of 
+breedings required to give 97.5/% probability of achieving more than ten 
+litters,  with the effective fertility being 15 per cent, is 119 (according to 
+the textbook). 
 
 ```{r}
 calculate_needed_breedings_textbook(
@@ -62,7 +74,7 @@ calculate_needed_breedings_textbook(
 
 The values I get when implementing the exact same model are slightly 
 different, possibly due to the approximations the authors used, 
-and the subtle difference between $P(x \leq X)$ and $P(x < X)$.
+and the subtle difference between $P(X \leq x)$ and $P(X < x)$.
 
 Thus, for the same figures as above, one would need 110 breedings but not 119.
 
@@ -72,10 +84,17 @@ calculate_needed_breedings_textbook(
     effective_fertility_p = 0.15, 
     n_litters = 10,
     calculation_type='')
+```
 
+Below I check that the calculation was correct. To confirm that `pbinom` 
+calculates $P(X \leq x)$ see the `lower.tail` argument in the `?pbinom` 
+description.
+```{r}
 # probability to get 10 or more litters from 110 breedings
 1 - pbinom(q = 9, size = 110, prob = 0.15)
+
 # probability to get 10 or more litters from 109 breedings
 1 - pbinom(q = 9, size = 109, prob = 0.15)
+
 # thus, 110 is the minimal required number of breedings to have P>0.975
 ```
