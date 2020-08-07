@@ -24,15 +24,21 @@ you need the `auth_token` argument.
 library(devtools)
 install_github("IMSBComputationalBiology/animalBreedingProj", 
                subdir="animalBreeding",
-               auth_token = "f6024685998b779a9db258994a7b4e44468b754c")
+               auth_token = "f6024685998b779a9db258994a7b4e44468b754c", 
+               force=TRUE)
 library(animalBreeding)
 ```
 
 # Usage
 
-To reproduce Table 3.12 from the "Animal production and breeding" textbook, run
+To reproduce the Table 3.12 from the "Animal production and breeding" textbook, 
+use the `calculate_needed_litters()` function. For instance, the number of 
+litters required to give 97.5/% probability of achieving 25 animals, with the 
+average litter size being 4, is 10.
 
 ```{r}
-cal
-
+calculate_needed_litters(condifence_p = 0.975, 
+                         litter_mean = 4, 
+                         litter_sd = 2.5, 
+                         n_needed = 25)
 ```
