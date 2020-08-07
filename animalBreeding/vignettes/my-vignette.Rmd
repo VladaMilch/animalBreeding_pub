@@ -1,0 +1,26 @@
+---
+title: "Package 'animalBreeding'"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Setup
+
+For installation from GitHub, run
+```{r setup}
+library(devtools)
+install_github("IMSBComputationalBiology/animalBreedingProj", subdir="animalBreeding",
+               auth_token = "f6024685998b779a9db258994a7b4e44468b754c")
+```
+
+Alternatively
