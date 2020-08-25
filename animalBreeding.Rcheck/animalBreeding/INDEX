@@ -1,0 +1,12 @@
+calculate_needed_breedings
+                        Calculate the number of breedings needed to
+                        guarantee a fixed number of offsprings with a
+                        certain probability
+calculate_needed_breedings_textbook
+                        Calculate the number of breedings needed to
+                        obtain a fixed numberf of litters with a
+                        certain confidence
+calculate_needed_litters_textbook
+                        Calculate the number of litters needed to
+                        obtain a fixed numberf of mice with a certain
+                        confidence

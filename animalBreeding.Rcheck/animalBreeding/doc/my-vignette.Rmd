@@ -39,7 +39,7 @@ Later it will be replaced.
 ## Reproducing Table 3.12
 
 To reproduce Table 3.12 from the "Animal production and breeding" textbook, 
-use the `calculate_needed_litters_textbook()` function. For instance, the number of 
+use the `calculate_needed_litters()` function. For instance, the number of 
 litters required to give 97.5% probability of achieving 25 animals, with the 
 average litter size being 4, is 10.  
 
@@ -62,8 +62,8 @@ what the authors did, I just rounded the values.
 ## Reproducing Table 3.13
 
 To reproduce Table 3.13 from the "Animal production and breeding" textbook, use 
-the `calculate_needed_breedings_textbook()` function. For instance, the number of 
-breedings required to give 97.5% probability of achieving more than 15 
+the `calculate_needed_breedings()` function. For instance, the number of 
+breedings required to give 97.5% probability of achieving more than 10 
 litters,  with the effective fertility being 20%, is 119 (according to 
 the textbook). 
 

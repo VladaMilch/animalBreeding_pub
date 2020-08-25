@@ -28,15 +28,13 @@ calculate_needed_breedings <- function(
     condifence_p,
     effective_fertility_p,
     n_needed,
-    litter_mean = NULL,
-    offsprings_n_sample = NULL, # should be a large vector, n of offs for a single mouse
+    litter_mean,
     litter_sd = 2.5,
     method = "textbook",
-    calculation_type = ""
-    #calculation_type = "textbook_exact"
+    calculation_type = "textbook_exact"
 ){
     # method reflects one of the available models
-    stopifnot(method %in% c("textbook", "binomial", "empirical", "poisson"))
+    stopifnot(method %in% c("textbook"))
 
     if(method=="textbook"){
         condifence_p1 = 1 - (1-condifence_p)/2
@@ -50,33 +48,6 @@ calculate_needed_breedings <- function(
             effective_fertility_p=effective_fertility_p,
             n_litters=nlit,
             calculation_type = calculation_type
-        )
-        return(nbre)
-    }
-    if(method=="binomial"){
-        nbre <- calculate_needed_breedings_binomial(
-            condifence_p = condifence_p, 
-            effective_fertility_p = effective_fertility_p, 
-            n_needed = n_needed, 
-            litter_mean = litter_mean
-        )
-        return(nbre)
-    }
-    if(method=="empirical"){
-        nbre <- calculate_needed_breedings_empirical(
-            condifence_p = condifence_p, 
-            effective_fertility_p = effective_fertility_p, 
-            n_needed = n_needed, 
-            offsprings_n_sample = offsprings_n_sample
-        )
-        return(nbre)
-    }
-    if(method=="poisson"){
-        nbre <- calculate_needed_breedings_poisson(
-            condifence_p = condifence_p, 
-            effective_fertility_p = effective_fertility_p, 
-            n_needed = n_needed, 
-            litter_mean = litter_mean
         )
         return(nbre)
     }

@@ -24,7 +24,7 @@ calculate_needed_breedings_textbook <- function(
     condifence_p, 
     effective_fertility_p,
     n_litters,
-    calculation_type=NULL
+    calculation_type='correct'
     #calculation_type='textbook_exact')
 ){  
     stopifnot(condifence_p < 1 & condifence_p > 0)

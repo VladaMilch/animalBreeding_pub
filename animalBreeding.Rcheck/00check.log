@@ -1,0 +1,127 @@
+* using log directory ‘/home/compbio/vmilchev/animalBreedingProj/animalBreeding.Rcheck’
+* using R version 3.6.1 (2019-07-05)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --as-cran’
+* checking for file ‘animalBreeding/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘animalBreeding’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking serialization versions ... OK
+* checking whether package ‘animalBreeding’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... WARNING
+Non-standard license specification:
+  What license is it under?
+Standardizable: FALSE
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+calculate_needed_breedings: warning in
+  calculate_needed_litters_textbook(condifence_p = condifence_p1,
+  litter_mean = litter_mean, litter_sd = litter_sd, n_neede =
+  n_needed): partial argument match of 'n_neede' to 'n_needed'
+calculate_needed_breedings_textbook: no visible global function
+  definition for ‘qnorm’
+calculate_needed_breedings_textbook: no visible global function
+  definition for ‘pbinom’
+calculate_needed_litters_textbook : quantile_of_sum: no visible global
+  function definition for ‘qnorm’
+calculate_needed_litters_textbook: no visible global function
+  definition for ‘optimise’
+Undefined global functions or variables:
+  optimise pbinom qnorm
+Consider adding
+  importFrom("stats", "optimise", "pbinom", "qnorm")
+to your NAMESPACE file.
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... WARNING
+Codoc mismatches from documentation object 'calculate_needed_breedings':
+calculate_needed_breedings
+  Code: function(condifence_p, effective_fertility_p, n_needed,
+                 litter_mean, litter_sd = 2.5, method = "textbook",
+                 calculation_type = "textbook_exact")
+  Docs: function(condifence_p, effective_fertility_p, n_needed,
+                 litter_mean, litter_sd = 2.5, method)
+  Argument names in code not in docs:
+    calculation_type
+  Mismatches in argument default values:
+    Name: 'method' Code: "textbook" Docs: 
+
+Codoc mismatches from documentation object 'calculate_needed_breedings_textbook':
+calculate_needed_breedings_textbook
+  Code: function(condifence_p, effective_fertility_p, n_litters,
+                 calculation_type = "correct")
+  Docs: function(condifence_p, effective_fertility_p, n_litters)
+  Argument names in code not in docs:
+    calculation_type
+
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... WARNING
+Warning: parse error in file 'lines':
+5: unexpected symbol
+26:     litter_sd = 2.5
+27:     n_litters
+        ^
+ WARNING
+‘qpdf’ is needed for checks on size reduction of PDFs
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘animalBreeding-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: calculate_needed_breedings
+> ### Title: Calculate the number of breedings needed to guarantee a fixed
+> ###   number of offsprings with a certain probability
+> ### Aliases: calculate_needed_breedings
+> 
+> ### ** Examples
+> 
+> calculate_needed_breedings(
++     condifence_p=0.95,
++     effective_fertility_p=0.6,
++     n_needed = 30,
++     litter_mean = 7,
++     litter_sd = 2.5
++     n_litters=10)
+Error: unexpected symbol in:
+"    litter_sd = 2.5
+    n_litters"
+Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 1 ERROR, 4 WARNINGs, 1 NOTE
