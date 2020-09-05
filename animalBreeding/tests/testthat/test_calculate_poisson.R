@@ -12,7 +12,7 @@ test_that("poisson model calculation correct", {
                                        effective_fertility_p = 1, 
                                        n_needed = 25, litter_mean = 7),
         5)
-    
+    set.seed(1)
     litmean=4
     k <- calculate_needed_breedings_poisson(confidence_p = 0.95, 
                                        effective_fertility_p = 0.7, 

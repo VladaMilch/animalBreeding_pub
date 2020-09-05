@@ -8,7 +8,7 @@
 # then, n=size = 2*round(m)
 
 calculate_needed_breedings_binomial <- function(
-  condifence_p,
+  confidence_p,
   effective_fertility_p,
   n_needed,
   litter_mean
@@ -38,13 +38,13 @@ calculate_needed_breedings_binomial <- function(
             confidence_4_K(K = x, 
                        needed_offs = n_needed, 
                        fertility = effective_fertility_p, 
-                       litter_mean = litter_mean)   >=     condifence_p
+                       litter_mean = litter_mean)   >=     confidence_p
     })))]
     return(Nbreedings)
 
 } 
 
-#calculate_needed_breedings_binomial(condifence_p = 0.95, effective_fertility_p = 0.6, n_needed = 50, litter_mean = 7)
+#calculate_needed_breedings_binomial(confidence_p = 0.95, effective_fertility_p = 0.6, n_needed = 50, litter_mean = 7)
 
 
 

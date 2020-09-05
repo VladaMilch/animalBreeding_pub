@@ -3,7 +3,7 @@
 #'
 #' At the moment only one model is implemented (the textbook).
 #'
-#' @param condifence_p a number between 0 and 1
+#' @param confidence_p a number between 0 and 1
 #' @param effective_fertility_p a number between 0 and 1
 #' @param litter_mean the average litter size of the bred animals
 #' @param litter_sd standart deviation of the litter size, equals 2.5
@@ -13,10 +13,10 @@
 #'
 #' @return The function returns the number of breedings
 #' needed to guarantee \code{n_needed} offprings with probability no less than
-#' \code{condifence_p}.
+#' \code{confidence_p}.
 #' @examples
 #' calculate_needed_breedings(
-#'     condifence_p=0.95,
+#'     confidence_p=0.95,
 #'     effective_fertility_p=0.6,
 #'     n_needed = 30,
 #'     litter_mean = 7,
@@ -25,7 +25,7 @@
 #'
 #' @export
 calculate_needed_breedings <- function(
-    condifence_p,
+    confidence_p,
     effective_fertility_p,
     n_needed,
     litter_mean = NULL,
@@ -35,18 +35,30 @@ calculate_needed_breedings <- function(
     calculation_type = ""
     #calculation_type = "textbook_exact"
 ){
-    # method reflects one of the available models
+    # arguments needed for every function
+    stopifnot(confidence_p < 1 & confidence_p > 0)
+    stopifnot(is.wholenumber(n_needed) & n_needed > 0)
     stopifnot(method %in% c("textbook", "binomial", "empirical", "poisson"))
-
+    
+    # stopifnot(confidence_p < 1 & confidence_p > 0)
+    # stopifnot(effective_fertility_p > 0 & effective_fertility_p <=1)
+    # stopifnot(is.wholenumber(n_needed) & n_needed > 0)
+    # stopifnot(all(is.wholenumber(offsprings_n_sample)))
+    # stopifnot(litter_sd > 0)
+    # stopifnot(method %in% c("textbook", "binomial", "empirical", "poisson"))
+    
+    
     if(method=="textbook"){
-        condifence_p1 = 1 - (1-condifence_p)/2
+        stopifnot(litter_sd > 0)
+        stopifnot(litter_mean > 0)
+        confidence_p1 = 1 - (1-confidence_p)/2
         nlit <- calculate_needed_litters_textbook(
-            condifence_p=condifence_p1,
+            confidence_p=confidence_p1,
             litter_mean=litter_mean,
             litter_sd=litter_sd,
             n_neede=n_needed)
         nbre <- calculate_needed_breedings_textbook(
-            condifence_p=condifence_p1,
+            confidence_p=confidence_p1,
             effective_fertility_p=effective_fertility_p,
             n_litters=nlit,
             calculation_type = calculation_type
@@ -55,7 +67,7 @@ calculate_needed_breedings <- function(
     }
     if(method=="binomial"){
         nbre <- calculate_needed_breedings_binomial(
-            condifence_p = condifence_p, 
+            confidence_p = confidence_p, 
             effective_fertility_p = effective_fertility_p, 
             n_needed = n_needed, 
             litter_mean = litter_mean
@@ -64,7 +76,7 @@ calculate_needed_breedings <- function(
     }
     if(method=="empirical"){
         nbre <- calculate_needed_breedings_empirical(
-            condifence_p = condifence_p, 
+            confidence_p = confidence_p, 
             effective_fertility_p = effective_fertility_p, 
             n_needed = n_needed, 
             offsprings_n_sample = offsprings_n_sample
@@ -73,7 +85,7 @@ calculate_needed_breedings <- function(
     }
     if(method=="poisson"){
         nbre <- calculate_needed_breedings_poisson(
-            condifence_p = condifence_p, 
+            confidence_p = confidence_p, 
             effective_fertility_p = effective_fertility_p, 
             n_needed = n_needed, 
             litter_mean = litter_mean

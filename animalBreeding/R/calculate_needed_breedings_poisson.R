@@ -11,7 +11,7 @@ calculate_needed_breedings_poisson <-   function(
     stopifnot(sum(prob1)==1)
     
     #search_interval <- seq(1,10)
-    doof1 <- DiscreteDistribution(supp = supp1, prob = prob1)
+    doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
     doofN_quantile = 0
     k=1
     while(doofN_quantile < n_needed){
