@@ -1,0 +1,75 @@
+---
+title: "Bug in distr::CompoundDistribution ?"
+author: "Vlada Milchevskaya"
+output: 
+    pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(distr)
+```
+
+
+
+# CompoundDistribution
+
+I suspect, there is a bug in `distr::CompoundDistribution` function, in case when both arguments are discrete distributions.
+Namely, that the distribution function `distr::p()` returns not the $P(\chi \leq 1)$ value (as written in the help) but $P(\chi < 1)$.
+
+
+Let us create a "toy" compound distribution:
+
+$$ \chi = \sum\limits_{i=1}^{\eta} \xi_i, $$ 
+where i.i.d summands $\xi_i \sim  DiscreteDistr$ and a degenerate distribution 
+$\eta \sim Bern(p=1)$ which means $P(\eta = 1)=1.$
+
+
+```{r, class.source="bg-danger", class.output="bg-danger"}
+CP1 <- distr::CompoundDistribution(
+    NumbOfSummandsDistr = distr::Binom(prob=1,size=1),
+    SummandsDistr = distr::Binom(prob=0.5,size=6))
+
+distr::p(CP1)(1)
+```
+
+According to the help page of the `distr::p()` function, it returns the value
+$$P(\chi \leq x).$$ However, we know that the distribution of $\chi$ is Binomial with `size=6` and `prob=0.5`. Therefore,
+
+$P(\chi \leq 1)$ is the following
+
+```{r}
+pbinom(q = 1, size = 6, prob = 0.5)
+dbinom(x = 0, size = 6, prob = 0.5) + dbinom(x = 1, size = 6, prob = 0.5)
+```
+
+And `distr::p(CP1)(1)` actually equals $P(\chi \leq 0)$, or, alternatively,  $P(\chi < 1)$,:
+```{r, class.output="bg-danger"}
+pbinom(q = 0, size = 6, prob = 0.5)
+dbinom(x = 0, size = 6, prob = 0.5)
+```
+
+Small note:
+```{r, class.source="bg-warning", class.output="bg-warning"}
+distr::p(CP1)(0)
+```
+
+
+# convpow
+
+Does not reproduce this error. Here we use the properties of the Binomial distribution.
+
+```{r, class.source="bg-info"}
+
+Compound_version <- distr::CompoundDistribution(
+      NumbOfSummandsDistr = distr::Binom(prob=1,size=2),
+      SummandsDistr = distr::Binom(prob=0.5,size=6))
+
+p(Compound_version)(1)
+
+convpow_version <- distr::convpow(D1 =  distr::Binom(prob=0.5,size=6), N=2)
+p(convpow_version)(1)
+
+pbinom(q = 1, size = 12, prob = 0.5)
+pbinom(q = 0, size = 12, prob = 0.5)
+```

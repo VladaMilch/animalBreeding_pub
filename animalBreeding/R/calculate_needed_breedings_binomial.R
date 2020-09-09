@@ -8,17 +8,18 @@
 # then, n=size = 2*round(m)
 
 calculate_needed_breedings_binomial <- function(
-  confidence_p,
-  effective_fertility_p,
-  n_needed,
-  litter_mean
+    confidence_p,
+    effective_fertility_p,
+    n_needed,
+    litter_mean,
+    binomial_p=0.5
 ){
     search_interval <- c(1:n_needed)
     confidence_4_K <- function(K, 
                                needed_offs, 
                                fertility, 
                                litter_mean,
-                               single_mouse_p=0.5){
+                               single_mouse_p=binomial_p){
         k_values <- seq(0, K, 1)
         sum(pbinom(
             q = needed_offs-1, 

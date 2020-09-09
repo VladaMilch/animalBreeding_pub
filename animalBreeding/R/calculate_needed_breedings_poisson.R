@@ -1,3 +1,20 @@
+#' Minimal number of breedings: Poisson 
+#' 
+#' Calculates the minimal number of animals to be bred in order
+#' to achieve a given number of offsprings with a certain confidence 
+#' under the following assumptions:
+#' Poisson-distributed number of offsprings per one animal,
+#' Binomially distributed number of fertile animals
+#'
+#' @param confidence_p desired confidence level (probability to achieve 
+#' n_needed offsprings), a number between 0 and 1, excluding 1
+#' @param effective_fertility_p how likely is an animal to be fertile, a number between 0 and 1, including 1
+#' @param n_needed desired total number of offsprings 
+#' @param litter_mean average number of offsprings one fertile animal produces
+#'
+#' @return returns one value: The minimal number of breedings
+#'
+#' @examples
 calculate_needed_breedings_poisson <-   function(
     confidence_p,
     effective_fertility_p,

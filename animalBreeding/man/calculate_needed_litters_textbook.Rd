@@ -6,14 +6,14 @@
 with a certain confidence}
 \usage{
 calculate_needed_litters_textbook(
-  condifence_p,
+  confidence_p,
   litter_mean,
   litter_sd = 2.5,
   n_needed
 )
 }
 \arguments{
-\item{condifence_p}{a number between 0 and 1}
+\item{confidence_p}{a number between 0 and 1}
 
 \item{litter_mean}{the average litter size of the bred mice}
 
@@ -25,7 +25,7 @@ by default - as specified in the textbook}
 \value{
 The function returns the number of litters
 needed to obtain \code{n_needed} offsprigns with probability no less than
-\code{condifence_p}.
+\code{confidence_p}.
 }
 \description{
 Here the number of offsprings one animal produces, i.e the litter size,
@@ -33,14 +33,14 @@ is assumed to follow a Gaussian distribution with mean \code{litter_mean} and
 the standard deviation \code{litter_sd}. The function returns
 the number of litters needed to obtain \code{n_needed} offsprings
 with probability
-no less than \code{condifence_p}.
+no less than \code{confidence_p}.
 }
 \details{
 Note: In the textbook, a litter cannot have size 0.
 }
 \examples{
 calculate_needed_breedings_textbook(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_litters=10)
 

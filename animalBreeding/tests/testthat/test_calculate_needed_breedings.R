@@ -12,7 +12,7 @@ test_that(desc = "Falling glacefully: Confidence",{
             effective_fertility_p = 1, 
             n_needed = 10, 
             litter_mean = 7, 
-            method = "textbook"))
+            method = "festing"))
   
     expect_error(
         calculate_needed_breedings(
@@ -20,7 +20,7 @@ test_that(desc = "Falling glacefully: Confidence",{
             effective_fertility_p = 1, 
             n_needed = 10, 
             litter_mean = 7, 
-            method = "textbook"))
+            method = "festing"))
     
 })
 
@@ -31,7 +31,7 @@ test_that(desc = "Falling glacefully: Effective fertility",{
       effective_fertility_p = 0, 
       n_needed = 10, 
       litter_mean = 7, 
-      method = "textbook"))
+      method = "festing"))
   
   expect_error(
     calculate_needed_breedings(
@@ -39,7 +39,7 @@ test_that(desc = "Falling glacefully: Effective fertility",{
       effective_fertility_p = 1.1, 
       n_needed = 10, 
       litter_mean = 7, 
-      method = "textbook"))
+      method = "festing"))
   
 })
 
@@ -50,7 +50,7 @@ test_that(desc = "Falling glacefully: Offstrings, litter",{
             effective_fertility_p = 0.5, 
             n_needed = 0, 
             litter_mean = 7, 
-            method = "textbook"))
+            method = "festing"))
   
     expect_error(
         calculate_needed_breedings(
@@ -58,7 +58,7 @@ test_that(desc = "Falling glacefully: Offstrings, litter",{
             effective_fertility_p = 0.5, 
             n_needed = 10, 
             litter_mean = 0, 
-            method = "textbook"))
+            method = "festing"))
   
 })
 
@@ -89,7 +89,7 @@ test_that(desc = "Calculation runs",{
             effective_fertility_p = effective_fertility_p_random, 
             n_needed = n_needed_rand, 
             litter_mean = litter_mean_rand, 
-            method = "textbook"), 
+            method = "festing"), 
     1)
 
     expect_length(

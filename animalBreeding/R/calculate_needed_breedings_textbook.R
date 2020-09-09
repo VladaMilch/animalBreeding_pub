@@ -24,14 +24,14 @@ calculate_needed_breedings_textbook <- function(
     confidence_p, 
     effective_fertility_p,
     n_litters,
-    calculation_type=NULL
+    textbook_error=FALSE
     #calculation_type='textbook_exact')
 ){  
     stopifnot(confidence_p < 1 & confidence_p > 0)
     stopifnot(effective_fertility_p < 1 & effective_fertility_p > 0)
     stopifnot(is.wholenumber(n_litters) & n_litters >= 1)
     
-    if(calculation_type=="textbook_exact"){
+    if(textbook_error){
         Nbreedings <- round( max( solve_quadratic(
             a = effective_fertility_p, 
             b = -round(qnorm(p = 1-confidence_p), digits = 1)*sqrt(

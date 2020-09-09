@@ -5,13 +5,14 @@
 \title{Calculate the number of breedings needed to obtain a fixed numberf of litters with a certain confidence}
 \usage{
 calculate_needed_breedings_textbook(
-  condifence_p,
+  confidence_p,
   effective_fertility_p,
-  n_litters
+  n_litters,
+  calculation_type = NULL
 )
 }
 \arguments{
-\item{condifence_p}{a number between 0 and 1}
+\item{confidence_p}{a number between 0 and 1}
 
 \item{effective_fertility_p}{a number between 0 and 1}
 
@@ -21,18 +22,18 @@ method='textbook' option}
 }
 \value{
 The function returns the number of breedings
-needed to achieve  \code{n_litters} with probability no less than \code{condifence_p}.
+needed to achieve  \code{n_litters} with probability no less than \code{confidence_p}.
 }
 \description{
 Here the number of fertile mice \code{n_litters} follows the binomial
 distribution with probability of success being \code{effective_fertility_p}
 and the number of trials being the number of breedings. The function returns
 the number of breedings needed to achieve  \code{n_litters} with probability
-no less than \code{condifence_p}.
+no less than \code{confidence_p}.
 }
 \examples{
 calculate_needed_breedings_textbook(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_litters=10)
 

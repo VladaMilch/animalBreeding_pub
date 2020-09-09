@@ -6,16 +6,18 @@
 offsprings with a certain probability}
 \usage{
 calculate_needed_breedings(
-  condifence_p,
+  confidence_p,
   effective_fertility_p,
   n_needed,
-  litter_mean,
+  litter_mean = NULL,
+  offsprings_n_sample = NULL,
   litter_sd = 2.5,
-  method
+  method = "textbook",
+  calculation_type = ""
 )
 }
 \arguments{
-\item{condifence_p}{a number between 0 and 1}
+\item{confidence_p}{a number between 0 and 1}
 
 \item{effective_fertility_p}{a number between 0 and 1}
 
@@ -31,14 +33,14 @@ by default - as specified in the textbook}
 \value{
 The function returns the number of breedings
 needed to guarantee \code{n_needed} offprings with probability no less than
-\code{condifence_p}.
+\code{confidence_p}.
 }
 \description{
 At the moment only one model is implemented (the textbook).
 }
 \examples{
 calculate_needed_breedings(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_needed = 30,
     litter_mean = 7,

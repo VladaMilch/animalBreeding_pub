@@ -10,7 +10,7 @@ solve_quadratic <- function(a,b,c){
     res = -b/(2*a)
     return(res)
   }
-  else{"No real roots."} # D<0
+  else{return(NULL)} # D<0
 }
 
 # D

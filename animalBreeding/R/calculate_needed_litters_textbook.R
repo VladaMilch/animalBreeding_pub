@@ -42,7 +42,7 @@ calculate_needed_litters_textbook <- function(
         f=function(nn){
             ifelse( quantile_of_sum(nn) >= n_needed, 
                     quantile_of_sum(nn)-n_needed, 
-                    100)
+                    10^5)
           },
         lower = 1, upper = n_needed)
     # WARNING! mathematically does not guarantee P >= confidence_p
