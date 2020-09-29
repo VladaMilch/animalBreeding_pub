@@ -26,6 +26,22 @@ calculate_needed_breedings_empirical <- function(
     return(k-1)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 
 # library("DEoptim")
 # ?opti
