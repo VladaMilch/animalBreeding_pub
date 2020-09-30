@@ -23,14 +23,14 @@ calculate_needed_breedings_binomial <- function(
         k_values <- seq(0, K, 1)
         sum(pbinom(
             q = needed_offs-1, 
-            size = k_values*2*litter_mean, 
+            size = k_values*litter_mean/single_mouse_p, 
             prob = single_mouse_p, 
             lower.tail = F)*
                 dbinom(
                     k_values, 
                     size = K, 
                     prob = fertility-dbinom(0, 
-                                            size = 2*litter_mean, 
+                                            size = litter_mean/single_mouse_p, 
                                             prob = single_mouse_p)))
     }
     
