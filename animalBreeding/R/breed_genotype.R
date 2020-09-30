@@ -57,10 +57,14 @@ breed_genotype <- function(
     k=1
     while(confi < confidence_p){
         doofK <- distr::convpow(doof1, N=k)
+        if(max(doofK@support) <= sum(genotypes_N-1)){
+            k <- k+1
+            next
+        }
         total_offs_seq <- seq(
-          max(sum(genotypes_N-1),1), 
-          k*4*litter_mean, 
-          1)
+            from = max(sum(genotypes_N-1),0), 
+            to = max(doofK@support), 
+            by = 1)
         p_genotypes_by_total <- pmultinom::pmultinom(
             size = total_offs_seq, 
             lower = genotypes_N-1, # because ksi > lower (not >=)
@@ -68,6 +72,8 @@ breed_genotype <- function(
             method = "exact")
         d_total <- distr::d(doofK)(total_offs_seq)
         confi <- sum(p_genotypes_by_total*d_total)
+        #cat(confi)
+        #cat("\n")
         k <- k+1
     }
     return(k-1)
