@@ -60,7 +60,7 @@ calculate_needed_breedings <- function(
     litter_mean = NULL,
     offsprings_n_sample = NULL, # should be a large vector, n of offs for a single mouse
     litter_sd = 2.5,
-    binomial_p,
+    binomial_p=NULL,
     method = "festing"
 ){
     # arguments needed for every function
