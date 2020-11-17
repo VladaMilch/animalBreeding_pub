@@ -28,7 +28,7 @@ calculate_needed_breedings_textbook <- function(
     #calculation_type='textbook_exact')
 ){  
     stopifnot(confidence_p < 1 & confidence_p > 0)
-    stopifnot(effective_fertility_p < 1 & effective_fertility_p > 0)
+    stopifnot(effective_fertility_p <= 1 & effective_fertility_p > 0)
     stopifnot(is.wholenumber(n_litters) & n_litters >= 1)
     
     if(textbook_error){

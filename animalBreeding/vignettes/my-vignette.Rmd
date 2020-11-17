@@ -1,6 +1,9 @@
 ---
 title: "Package 'animalBreeding'"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    toc: true
+#output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,6 +15,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(rmarkdown.html_vignette.check_title = FALSE)
 library(ggplot2)
 ```
 
@@ -175,6 +179,27 @@ calculate_needed_breedings(
 ```
 
 
+## Genotype-specific calculations
+
+Assume you need no less than 10 KO, 15 heterozygous and 5 WT offsprings to be 
+born, with the confidence of 95%. Effective fertility of the mice is 70%, and 
+the average litter size is 4. The parameter `genotypes_p=c(0.25, 0.5, 0.25)` 
+reflects standard Mendelian probablities for the respective genotypes, 
+and `genotypes_N = c(1,0,0)` specifies the desired number of offsprings.
+
+```{r}
+x <- breed_genotype(
+    confidence_p = 0.95, 
+    effective_fertility_p = 0.7, 
+    genotypes_p = c(0.25, 0.5, 0.25), 
+    genotypes_N = c(10,15,5),
+    litter_mean = 4, 
+    method = "poisson")
+x
+
+```
+
+<!--
 # Methods
 
 First, let us assume that every fertile animal $i$ produces $\xi_i$ offsprings.
@@ -201,5 +226,5 @@ Alternatively, one could assume $\xi_i$ to come from Poisson or Binomial
 distributions, or even estimate it empirically from the some 
 previously produced data. 
 
-
+--> 
 

@@ -72,16 +72,7 @@ test_that("Binomial calculation correct: p!=0.5",{
         binomial_p = 0.2,
         litter_mean = litmean)
     )
-  
-  expect_equal(
-    2,
-    calculate_needed_breedings_binomial(
-      confidence_p = pp2+0.001,
-      effective_fertility_p = fertility, 
-      n_needed, 
-      binomial_p = 0.2,
-      litter_mean = litmean)
-  )
+
   
 })
   #   # m1offs <- distr::Binom(prob=0.5,size=2*litmean)

@@ -12,28 +12,42 @@ calculate_needed_breedings(
   litter_mean = NULL,
   offsprings_n_sample = NULL,
   litter_sd = 2.5,
-  method = "textbook",
-  calculation_type = ""
+  binomial_p = NULL,
+  method = "festing"
 )
 }
 \arguments{
-\item{confidence_p}{a number between 0 and 1}
+\item{confidence_p}{desired confidence level (probability to achieve 
+n_needed offsprings), a number between 0 and 1, excluding 1}
 
-\item{effective_fertility_p}{a number between 0 and 1}
+\item{effective_fertility_p}{how likely is an animal to be fertile, a number 
+between 0 and 1, including 1}
 
-\item{n_needed}{number of offsprings needed to be born}
+\item{n_needed}{desired total number of offsprings}
 
-\item{litter_mean}{the average litter size of the bred animals}
+\item{litter_mean}{average number of offsprings one fertile animal produces, 
+needed for method values "festing", "binomial" and "poisson"}
 
-\item{litter_sd}{standart deviation of the litter size, equals 2.5
-by default - as specified in the textbook}
+\item{offsprings_n_sample}{a sample of the offspring numbers one animal 
+produces, needed for method value "empirical"; 
+for instance, c(3,1,5,8) is a the data from four animals: The first 
+animal had 3 offsprings, the second had 1 offspring, the third animal had 5 
+offsprings and the fourth animal had 8 offsprings; 
+preferably, this should be a large sample}
 
-\item{method}{the model used for the calculation, can be "textbook"}
+\item{litter_sd}{standard deviation of the litter size, needed for method 
+value "festing"}
+
+\item{method}{can be "festing", "poisson", "binomial" or "empirical"}
+
+\item{calculation_type}{}
 }
 \value{
 The function returns the number of breedings
 needed to guarantee \code{n_needed} offprings with probability no less than
 \code{confidence_p}.
+
+
 }
 \description{
 At the moment only one model is implemented (the textbook).

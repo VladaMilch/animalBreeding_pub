@@ -1,3 +1,9 @@
+#' Calculate the number of breedings needed to guarantee a fixed number of
+#' offsprings with a certain probability
+#'
+#' At the moment only one model is implemented (the textbook).
+#'
+#' @export
 breed_genotype <- function(
     confidence_p,
     effective_fertility_p,

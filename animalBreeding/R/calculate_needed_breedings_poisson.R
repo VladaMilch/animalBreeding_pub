@@ -19,7 +19,8 @@ calculate_needed_breedings_poisson <-   function(
     confidence_p,
     effective_fertility_p,
     n_needed,
-    litter_mean
+    litter_mean,
+    search_strarting_point = 1
 ){
     freqs <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
     freqs <- freqs/sum(freqs)
