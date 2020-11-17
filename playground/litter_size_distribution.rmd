@@ -1,0 +1,221 @@
+---
+title: "Litter size and fertility: Learning from the data"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+devtools::load_all("../animalBreeding/")
+library(ggplot2)
+library(ggpubr)
+options(stringsAsFactors = FALSE)
+```
+
+# Data
+
+## Parsing (PDF --> table)
+
+See [here]("../external/mouse_data/mouse3/tables/parsing_script.R") 
+for PDF to table conversion and parcing.
+
+
+## Load and clean the data
+
+First of all, we load the litter size data (the number of pups born etc.) 
+per strain from the already generated txt files, and then do a small quality 
+check: Look at the distributions of the litter size (it should look like a 
+Poisson, or at least be one-modal). 
+
+```{r read data in, include=FALSE}
+txt.files <- c(
+  list.files(path = "../external/mouse_data/mouse3/tables/",
+             pattern = ".txt",
+             full.names = T),
+  list.files(path = "../external/mouse_data/mouse2/tables/",
+             pattern = ".txt",
+             full.names = T)
+  )
+
+strain_names <- c(
+  sapply(
+    txt.files[1:7], FUN =function(char_el){
+      fname <- strsplit(char_el, split = "tables//")[[1]][2]
+      strsplit(fname, split="_interne_")[[1]][1]
+      }),
+  "CD1_99_10", 
+  "CD1_10_20")
+
+table_list <- lapply(txt.files, FUN=function(x){
+    tt <- read.table(file = x, 
+             header = T)
+    })
+names(table_list) <- strain_names
+```
+
+
+```{r print names and histograms}
+names(table_list)
+
+hist(table_list[[2]]$pups_born, breaks = 20, col = "pink")
+
+hist(table_list[[8]]$pups_born, breaks = 25, col = "pink")
+
+```
+
+Quite often, only pups of one particular gender are required for the experiment.
+Therefore, all pups of the other gender are killed - and this is usually not stated in the data.
+Therefore, I filter all these cases out. Here is the number of litters per 
+strain before (left) and after cleaning (right).
+
+```{r, include = FALSE}
+table_cleaning <- function(current_table){
+  df <- data.frame(
+    apply(current_table[,2:ncol(current_table)], c(1,2), as.numeric)
+    )
+    suspicious_rows <- 
+      intersect(
+        which(df$pups_beforeW > 0),
+        which(df$pups_beforeW==df$weaned_f | df$pups_beforeW==df$weaned_m )
+      )
+    if(length(suspicious_rows) > 0){
+      clean_table <- current_table[-suspicious_rows, ]
+      return(clean_table)
+    }else{
+      return(current_table)
+    }
+}
+
+table_list_clean <- lapply(table_list, table_cleaning)
+nlitters <- data.frame( 
+  before = sapply(table_list, nrow), 
+  after = sapply(table_list_clean, nrow))
+```
+
+```{r}
+nlitters
+```
+
+
+
+# Histograms with a Pois and NB fit for each strain
+
+```{r, include = FALSE}
+hists_list <- lapply(names(table_list_clean), 
+                     FUN=function(df_name){
+                       
+  df <- table_list_clean[[df_name]]
+  df_clean <- as.data.frame(
+    apply(data.frame(df[,2:3]), 
+          c(1,2), 
+          as.numeric))
+  rowmax <- apply(df_clean, 1, max)
+
+  # can be changed to pups_born or pups_beforeW
+  # xx <- rowmax
+  xx <- df_clean$pups_beforeW
+  support <- seq(0, max(xx)+1)
+
+  fitNB <- MASS::fitdistr(x = xx, 
+                          densfun = "negative binomial")
+  fitPois <- MASS::fitdistr(x = xx, 
+                          densfun = "poisson")
+  fitProb_NB <- dnbinom(support, 
+                        size=fitNB$estimate["size"], 
+                        mu=fitNB$estimate["mu"])
+  fitProb_Pois <- dpois(support, lambda=fitPois$estimate["lambda"])
+  
+  observed_values <- table(xx)
+  values <- sapply(
+    support, 
+    FUN = function(z){
+      ifelse(as.character(z) %in% names(observed_values), 
+             observed_values[as.character(z)], 
+             0)
+      }) 
+  names(values) <- support
+  
+  stopifnot(observed_values == values[names(observed_values)])
+  
+  freqs <- values/ sum(values)
+  df2plot <- data.frame(
+    support, 
+    values, 
+    freqs, 
+    fitted_Pois = fitProb_Pois,
+    fitted_NB = fitProb_NB)
+  
+  
+  ggplot(df2plot, aes(x=support)) + 
+    geom_bar(aes(y=freqs), stat="identity", width = 0.05) + 
+    geom_line(aes(y=fitted_Pois, color="Poisson fit")) + 
+    geom_line(aes(y=fitted_NB, color="NB fit")) + 
+    labs(title = paste0("Strain: ",df_name),
+         caption = paste0("Number of litters: ", nrow(df_clean))
+            )
+  
+  
+})
+
+library(ggpubr)
+theme_set(theme_pubr())
+length(hists_list)
+ggarrange(plotlist = hists_list) %>%
+  ggexport(filename = "litter_distribution_fits.pdf", 
+           plotlist = hists_list)
+```
+
+```{r}
+hists_list
+```
+
+# Fertility
+
+```{r}
+load("../external/mouse_data/mouse3/fertility/nfemales.Rdata")
+pre_tab_list <- lapply(
+  names(table_list_clean), FUN = function(df_name){
+    df <- table_list_clean[[df_name]]
+    df_clean <- as.data.frame(
+      apply(data.frame(df[,2:3]), 
+          c(1,2), 
+          as.numeric))
+    rowmax <- apply(df_clean, 1, max)
+    c(
+      round(mean(rowmax),1),
+      median(rowmax), 
+      max(rowmax), 
+      length(rowmax), 
+      nfemales[df_name], 
+      df_name)
+})
+  
+
+
+pre_tab_df <- data.frame(do.call(rbind, pre_tab_list))
+colnames(pre_tab_df) <- c("mean", "median", "max", "n_breedings", "n_fertile", "strain")
+
+fertility <- round(
+  as.numeric(pre_tab_df$n_fertile)/as.numeric(pre_tab_df$n_breedings)*100, 
+  digits = 1)
+
+strain_fertility_litter_df <- data.frame( 
+            strain = pre_tab_df[,c("strain")],
+            fertility = fertility,
+            litter_mean = as.numeric(pre_tab_df[,c("mean")]),
+            litter_median = as.numeric(pre_tab_df[,c("median")]),
+            litter_max = as.numeric(pre_tab_df[,c("max")]),
+            n_breedings = as.numeric(pre_tab_df[,c("n_breedings")]),
+            n_fertile = as.numeric(pre_tab_df[,c("n_fertile")])
+          )
+            
+save(strain_fertility_litter_df, file = "strain_fertility_litter_df.RData")
+write.table(strain_fertility_litter_df, file = "strain_fertility_litter_df.txt", 
+            quote = FALSE, sep = "\t", row.names = F, col.names = T)
+
+strain_fertility_litter_df
+
+sort(strain_fertility_litter_df$fertility)
+mean(strain_fertility_litter_df$litter_mean)
+
+```
+

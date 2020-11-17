@@ -1,0 +1,10 @@
+strain	fertility	litter_mean	litter_median	litter_max	n_breedings	n_fertile
+B6cBrd	93.5	6.8	7	12	77	72
+B6D2F1	33.8	8.1	8	18	565	191
+B6J_CrlF	26.8	6.4	7	13	444	119
+B6J_Fue	46.6	7.4	7	19	1219	568
+Balbc	73.3	5.8	6	11	116	85
+DBA2_J_Fue	57.9	5.9	6	16	178	103
+NMRI	15.5	11.8	12	20	375	58
+CD1_99_10	120.1	10.2	10	20	593	712
+CD1_10_20	135.4	12	12.5	20	280	379
