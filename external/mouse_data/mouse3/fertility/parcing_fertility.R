@@ -23,9 +23,7 @@ mousepdf_count_females <- function(current_file)
 files_pdf <-   c(
   list.files(path = "./external/mouse_data/mouse3/", 
                           pattern = ".pdf", 
-                          full.names = T),
-  list.files(path = "./external/mouse_data/mouse2/", 
-                        pattern = ".pdf", full.names = T)
+                          full.names = T)
   )
 
 
@@ -33,19 +31,9 @@ files_pdf <-   c(
 nfemales <- sapply(files_pdf, mousepdf_count_females)
 # N females from the file: 72 191 119 NA 85 103 58
 
+files_pdf
 
 
 # attach strain names 
-names(nfemales) <- c(
-  sapply(
-    files_pdf[1:7], FUN =function(char_el){
-      fname <- strsplit(char_el, split = "mouse3//")[[1]][2]
-      paste0(unlist(strsplit(
-        strsplit(fname, split=" interne ")[[1]][1], 
-        split = " ")), collapse = "_")
-    }
-  ),
-  "CD1_99_10", 
-  "CD1_10_20")
-
+names(nfemales) 
 save(nfemales, file = "external/mouse_data/mouse3/fertility/nfemales.Rdata")

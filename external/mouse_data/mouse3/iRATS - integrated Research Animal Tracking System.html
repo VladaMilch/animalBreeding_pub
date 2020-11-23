@@ -1,0 +1,6762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+
+
+
+<title>iRATS - integrated Research Animal Tracking System</title>
+   <link rel="stylesheet" href="iRATS%20-%20integrated%20Research%20Animal%20Tracking%20System_files/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="iRATS%20-%20integrated%20Research%20Animal%20Tracking%20System_files/report.css">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head>
+<body style="background-color: #FFFFFF; color: #000000">
+<table width="620" cellspacing="0" cellpadding="0" border="0">
+
+	
+	<tbody><tr>
+		<td valign="top">
+	<h2>Breeding report</h2>
+
+        
+
+
+<script type="text/javascript">
+
+function ajaxCall() {
+	   $.post(document.haku.controllerServletPage.value, $('#animalSearchForm').serialize(), function(data) {
+			  $("#animalSearchResultsArea").empty().append(data);	
+		     });
+}
+
+
+	
+function animalSearchAjax () {
+   	  resetForm();
+  	  document.haku.search.value = "search";	 
+	  document.haku.start.value=0;
+	  document.haku.newSearch.value = 'true';
+	  document.haku.newResults.value = 'true';
+	  var searchB = document.getElementById('animalSearchButton');
+	  searchB.value= 'Searching...';	 
+	  searchB.disabled=true;
+	  try {
+		    searchB.scrollIntoView();  
+		   } catch(e) {}
+	  $.post(document.haku.controllerServletPage.value, $('#animalSearchForm').serialize(), function(data) {
+		  $("#animalSearchResultsArea").empty().append(data);
+		  searchB.value= 'Search';	 
+		  searchB.disabled = false;
+		  
+	  });
+	  		
+}
+
+
+
+
+</script>
+
+
+	
+
+        
+
+<b>Search criteria:</b><br><br>
+
+<b>Strain:</b> Card9 KO<br><b>Gender:</b> Female<br><b>Execution time frame:</b> 20.11.2014 - 20.11.2020<br><b>Status:</b> Not in experiment, In experiment, Stock animal, In breeding, In transfer, Exported, In quarantine, Dead<br><b>Actual severity:</b> Not in experiment, 0, 1, 2, 3<br><b>Search room/cage/licence/project using:</b> 20.11.2014  -  20.11.2020<br>
+<br>&nbsp;<br>
+
+<input type="hidden" name="animalAmount" value="58">
+
+
+
+
+
+
+<table class="taulu" width="100%" cellspacing="1" cellpadding="5" border="0">
+<tbody><tr><th class="taulu" rowspan="2">Location</th>
+    <th class="taulu" rowspan="2">Animal</th>
+    
+        <th class="taulu" rowspan="2">Genotype</th>
+    
+    <th class="taulu" rowspan="2">Mating partner</th>
+    
+        <th class="taulu" rowspan="2">Partner genotype</th>
+    
+    <th class="taulu" rowspan="2">Mating date</th>
+    <th class="taulu" rowspan="2">All birth dates</th>
+    <th class="taulu" rowspan="2">Pups born</th>
+    
+        <th class="taulu" rowspan="2">Pups before weaning</th>
+    
+    
+    <th class="taulu" colspan="3">Pups weaned</th></tr>
+<tr><th class="taulu"><img src="iRATS%20-%20integrated%20Research%20Animal%20Tracking%20System_files/femaleSign.gif" alt="Female"></th>
+    <th class="taulu"><img src="iRATS%20-%20integrated%20Research%20Animal%20Tracking%20System_files/maleSign.gif" alt="Male"></th>
+    <!--th class="taulu">Unknown</th-->
+    <th class="taulu">?</th></tr>
+
+
+<tr><td class="taulu" rowspan="5" valign="middle" align="left"> LASC-Schlieren,
+    Room WAF G114 (SPF),
+    Cage 944970</td>
+
+<td class="taulu" rowspan="5" valign="middle" align="left">
+    
+
+    
+    SF7259 L, Female, *15.01.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        
+
+            SF7260 L, Male, *15.01.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="5" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">02.03.2019</td>
+    
+        
+        <td class="taulu" valign="middle">24.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                10</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">13.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                10</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> LASC-Schlieren,
+    Room WAF G114 (SPF),
+    Cage 944971</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    SH0648 L, Female, *23.12.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            SH0649 R, Male, *23.12.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">02.03.2019</td>
+    
+        
+        <td class="taulu" valign="middle">01.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">25.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> LASC-Schlieren,
+    Room WAF G114 (SPF),
+    Cage 1015103</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    190, Female, *04.07.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            211, Male, *20.07.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">03.10.2018</td>
+    
+        
+        <td class="taulu" valign="middle">21.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.12.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="7" valign="middle" align="left"> LASC-Schlieren,
+    Room WAF G114 (SPF),
+    Cage 1021422</td>
+
+<td class="taulu" rowspan="7" valign="middle" align="left">
+    
+
+    
+    SF0386 R, Female, *24.08.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        
+
+            SF0391 L/R, Male, *24.08.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="7" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">07.10.2019</td>
+    
+        
+        <td class="taulu" valign="middle">06.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">12.04.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">7</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 29289</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    678, Female, *17.07.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            661, Male, *14.07.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">15.09.2020</td>
+    
+        
+        <td class="taulu" valign="middle">04.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">09.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 29290</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    671, Female, *17.07.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            659, Male, *14.07.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">15.09.2020</td>
+    
+        
+        <td class="taulu" valign="middle">18.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">09.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 29291</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    655, Female, *14.07.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            675, Male, *17.07.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">15.09.2020</td>
+    
+        
+        <td class="taulu" valign="middle">27.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="5" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 812837</td>
+
+<td class="taulu" rowspan="5" valign="middle" align="left">
+    
+
+    
+    182, Female, *27.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        
+
+            187, Male, *27.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="5" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">17.09.2018</td>
+    
+        
+        <td class="taulu" valign="middle">25.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 812865</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    189, Female, *04.07.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            212, Male, *20.07.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">03.10.2018</td>
+    
+        
+        <td class="taulu" valign="middle">04.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                12</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">28.12.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="7" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 812984</td>
+
+<td class="taulu" rowspan="7" valign="middle" align="left">
+    
+
+    
+    183, Female, *27.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        
+
+            184, Male, *27.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="7" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">17.09.2018</td>
+    
+        
+        <td class="taulu" valign="middle">03.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 828606</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    168, Female, *01.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        myd88, trif, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            174, Male, *01.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            myd88, trif, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">18.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">12.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.09.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 828606</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    169, Female, *01.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        myd88, trif, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            174, Male, *01.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            myd88, trif, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">21.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.09.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 828607</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    170, Female, *01.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88, trif, </td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            173, Male, *01.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            myd88, trif, </td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">11.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">19.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="7" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 828702</td>
+
+<td class="taulu" rowspan="7" valign="middle" align="left">
+    
+
+    
+    175, Female, *04.08.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        myd88 +/-, trif +/-, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        
+
+            188, Male, *05.08.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="7" valign="middle" align="left">
+            myd88 -/-, trif -/-, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">21.09.2018</td>
+    
+        
+        <td class="taulu" valign="middle">01.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 828702</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    176, Female, *04.08.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        myd88 +/-, trif +/-, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            188, Male, *05.08.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            myd88 -/-, trif -/-, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">21.09.2018</td>
+    
+        
+        <td class="taulu" valign="middle">22.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.10.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="7" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850017</td>
+
+<td class="taulu" rowspan="7" valign="middle" align="left">
+    
+
+    
+    324, Female, *05.02.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        
+
+            322, Male, *05.02.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="7" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">10.04.2019</td>
+    
+        
+        <td class="taulu" valign="middle">24.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">13.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">28.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">03.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850027</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    432, Female, *17.05.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        myd88 -/-, trif -/-, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            417, Male, *20.04.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88, trif -/-, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">24.07.2019</td>
+    
+        
+        <td class="taulu" valign="middle">21.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+<tr><!-- mating subrow start if bdIndex > 0 -->
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            440, Male, *20.05.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 -/-, trif +/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">09.07.2019</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850062</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    372, Female, *11.02.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88 +/-, trif +/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            381, Male, *16.02.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">28.03.2019</td>
+    
+        
+        <td class="taulu" valign="middle">27.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850274</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    329, Female, *24.02.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            327, Male, *24.02.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">11.04.2019</td>
+    
+        
+        <td class="taulu" valign="middle">27.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">28.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850274</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    337, Female, *04.03.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            327, Male, *24.02.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">11.04.2019</td>
+    
+        
+        <td class="taulu" valign="middle">01.11.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850287</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    338, Female, *04.03.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            332, Male, *01.03.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">11.04.2019</td>
+    
+        
+        <td class="taulu" valign="middle">04.11.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">19.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">12.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                11</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850287</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    340, Female, *04.03.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            332, Male, *01.03.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">11.04.2019</td>
+    
+        
+        <td class="taulu" valign="middle">19.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850291</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    439, Female, *20.05.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            423, Male, *23.04.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            myd88, trif -/-, card9</td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">24.07.2019</td>
+    
+        
+        <td class="taulu" valign="middle">02.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+<tr><!-- mating subrow start if bdIndex > 0 -->
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            440, Male, *20.05.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 -/-, trif +/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">09.07.2019</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 850358</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    395, Female, *01.04.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        myd88 -/-, trif -/-, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            397, Male, *01.04.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">14.06.2019</td>
+    
+        
+        <td class="taulu" valign="middle">07.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">13.11.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.07.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 861070</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    250, Female, *28.12.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        myd88 +/-, trif +/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            247, Male, *01.01.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 wt</td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">12.02.2019</td>
+    
+        
+        <td class="taulu" valign="middle">09.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">13.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 865909</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    171, Female, *01.06.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        myd88, trif, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            172, Male, *01.06.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            myd88, trif, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">23.09.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 914944</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    199, Female, *23.09.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        myd88 +/-, trif +/-, card9</td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            194, Male, *27.08.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            myd88 -/-, trif +/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">02.11.2018</td>
+    
+        
+        <td class="taulu" valign="middle">05.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">18.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.11.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="11" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 914944</td>
+
+<td class="taulu" rowspan="11" valign="middle" align="left">
+    
+
+    
+    204, Female, *21.09.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="11" valign="middle" align="left">
+        myd88 -/-, trif -/-, card9</td>
+
+
+    
+    <td class="taulu" rowspan="11" valign="middle" align="left">
+        
+
+            194, Male, *27.08.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="11" valign="middle" align="left">
+            myd88 -/-, trif +/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="11" valign="middle" align="left">02.11.2018</td>
+    
+        
+        <td class="taulu" valign="middle">18.09.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">25.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.08.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.06.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.05.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                10</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.04.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">18.03.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">03.02.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.01.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">28.12.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="7" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 959602</td>
+
+<td class="taulu" rowspan="7" valign="middle" align="left">
+    
+
+    
+    471, Female, *01.11.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">
+        
+
+            467, Male, *27.10.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="7" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="7" valign="middle" align="left">05.12.2019</td>
+    
+        
+        <td class="taulu" valign="middle">24.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">12.05.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.04.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="9" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 959690</td>
+
+<td class="taulu" rowspan="9" valign="middle" align="left">
+    
+
+    
+    479, Female, *22.11.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="9" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="9" valign="middle" align="left">
+        
+
+            481, Male, *22.11.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="9" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="9" valign="middle" align="left">06.01.2020</td>
+    
+        
+        <td class="taulu" valign="middle">31.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">09.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">24.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.05.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="1" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 959756</td>
+
+<td class="taulu" rowspan="1" valign="middle" align="left">
+    
+
+    
+    510, Female, *15.12.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        myd88 +/-, trif, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            485, Male, *21.10.2019, MyD88TRIFCARD9 KO , Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">22.01.2020</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="1" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 961229</td>
+
+<td class="taulu" rowspan="1" valign="middle" align="left">
+    
+
+    
+    446, Female, *05.06.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        myd88 -/-, trif, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            449, Male, *05.06.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 -/-, trif, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">30.09.2019</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 961244</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    448, Female, *05.06.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88 +/-, trif, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            450, Male, *05.06.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            myd88 +/-, trif, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">30.09.2019</td>
+    
+        
+        <td class="taulu" valign="middle">08.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.11.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962355</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    430, Female, *22.08.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            429, Male, *19.08.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">07.10.2019</td>
+    
+        
+        <td class="taulu" valign="middle">23.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">29.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            12</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">7</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">18.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">9</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">25.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962355</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    431, Female, *26.08.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            429, Male, *19.08.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">07.10.2019</td>
+    
+        
+        <td class="taulu" valign="middle">19.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">18.12.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">7</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="1" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962365</td>
+
+<td class="taulu" rowspan="1" valign="middle" align="left">
+    
+
+    
+    474, Female, *25.08.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        myd88 +/-, trif wt, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            461, Male, *27.07.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 -/-, trif, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">27.10.2019</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="1" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962365</td>
+
+<td class="taulu" rowspan="1" valign="middle" align="left">
+    
+
+    
+    475, Female, *05.09.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        myd88 -/-, trif, card9 +/-</td>
+
+
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">
+        
+
+            461, Male, *27.07.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="1" valign="middle" align="left">
+            myd88 -/-, trif, card9 +/-</td>
+    
+    
+    <td class="taulu" rowspan="1" valign="middle" align="left">27.10.2019</td>
+    
+    <td class="taulu"></td><td class="taulu"></td>
+    
+    <td class="taulu"></td><td class="taulu"></td><td class="taulu"></td>
+    
+        <td class="taulu"></td>
+    
+</tr>
+
+
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962398</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    434, Female, *01.09.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            432, Male, *26.08.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">14.10.2019</td>
+    
+        
+        <td class="taulu" valign="middle">15.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">03.02.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.10.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 962398</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    437, Female, *04.09.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            432, Male, *26.08.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">14.10.2019</td>
+    
+        
+        <td class="taulu" valign="middle">25.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">02.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.01.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.11.2019</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="8" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 991209</td>
+
+<td class="taulu" rowspan="8" valign="middle" align="left">
+    
+
+    
+    503, Female, *02.12.2019, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="8" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="8" valign="middle" align="left">
+        
+
+            507, Male, *02.12.2019, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="8" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="8" valign="middle" align="left">21.01.2020</td>
+    
+        
+        <td class="taulu" valign="middle">06.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">16.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            1</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.04.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">29.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">03.03.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1043682</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    653, Female, *01.07.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            654, Male, *01.07.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">18.08.2020</td>
+    
+        
+        <td class="taulu" valign="middle">14.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">08.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1043773</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    658, Female, *14.07.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            669, Male, *28.06.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">18.08.2020</td>
+    
+        
+        <td class="taulu" valign="middle">31.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                10</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            10</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">06.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1043787</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    635, Female, *05.06.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            637, Male, *05.06.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">16.07.2020</td>
+    
+        
+        <td class="taulu" valign="middle">17.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">29.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="8" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116645</td>
+
+<td class="taulu" rowspan="8" valign="middle" align="left">
+    
+
+    
+    575, Female, *29.02.2020, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="8" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="8" valign="middle" align="left">
+        
+
+            559, Male, *21.02.2020, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="8" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="8" valign="middle" align="left">21.04.2020</td>
+    
+        
+        <td class="taulu" valign="middle">08.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">18.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">23.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">28.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">08.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.05.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116677</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    597, Female, *23.03.2020, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            595, Male, *29.02.2020, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">15.05.2020</td>
+    
+        
+        <td class="taulu" valign="middle">20.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">22.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">05.06.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116678</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    608, Female, *25.03.2020, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            596, Male, *29.02.2020, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">15.05.2020</td>
+    
+        
+        <td class="taulu" valign="middle">09.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116706</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    589, Female, *22.04.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        
+
+            591, Male, *22.04.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="4" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="4" valign="middle" align="left">16.06.2020</td>
+    
+        
+        <td class="taulu" valign="middle">15.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">3</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">31.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="5" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116789</td>
+
+<td class="taulu" rowspan="5" valign="middle" align="left">
+    
+
+    
+    587, Female, *22.04.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">
+        
+
+            590, Male, *22.04.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="5" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="5" valign="middle" align="left">16.06.2020</td>
+    
+        
+        <td class="taulu" valign="middle">15.11.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">30.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">15.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.07.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U209,
+    Cage 1116798</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    610, Female, *05.06.2020, Card9 KO, In breeding
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        myd88 +/-, trif -/-, card9 -/-</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            613, Male, *05.06.2020, Card9 KO, In breeding
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            myd88 +/-, trif -/-, card9 -/-</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">15.07.2020</td>
+    
+        
+        <td class="taulu" valign="middle">16.10.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                1</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">14.09.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">19.08.2020</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746065</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    41, Female, *16.08.2017, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        Not defined</td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            43, Male, *16.08.2017, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            Not defined</td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">26.09.2017</td>
+    
+        
+        <td class="taulu" valign="middle">27.05.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.03.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.01.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.01.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.12.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                9</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            12</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746066</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    40, Female, *16.08.2017, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        Not defined</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            47a, Male, *16.08.2017, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            Not defined</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">26.09.2017</td>
+    
+        
+        <td class="taulu" valign="middle">01.01.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746073</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    72, Female, *01.11.2017, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        Card9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            58, Male, *01.11.2017, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            Card9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">05.03.2018</td>
+    
+        
+        <td class="taulu" valign="middle">13.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                10</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            9</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">04.07.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.05.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="3" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746157</td>
+
+<td class="taulu" rowspan="3" valign="middle" align="left">
+    
+
+    
+    39, Female, *16.08.2017, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        Not defined</td>
+
+
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">
+        
+
+            45, Male, *16.08.2017, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="3" valign="middle" align="left">
+            Not defined</td>
+    
+    
+    <td class="taulu" rowspan="3" valign="middle" align="left">26.09.2017</td>
+    
+        
+        <td class="taulu" valign="middle">20.03.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">25.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">01.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="6" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746629</td>
+
+<td class="taulu" rowspan="6" valign="middle" align="left">
+    
+
+    
+    109, Female, *01.01.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        CARD9 +/-, </td>
+
+
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">
+        
+
+            120, Male, *01.01.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="6" valign="middle" align="left">
+            CARD9 -/-, </td>
+    
+    
+    <td class="taulu" rowspan="6" valign="middle" align="left">05.03.2018</td>
+    
+        
+        <td class="taulu" valign="middle">15.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">20.07.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">6</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">27.06.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.05.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                2</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            2</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">26.04.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                3</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            3</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">03.04.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746746</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    124, Female, *27.01.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        CARD9 -/-, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            114, Male, *01.01.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">05.03.2018</td>
+    
+        
+        <td class="taulu" valign="middle">28.04.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                4</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            4</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">10.04.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746746</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    154, Female, *10.04.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        CARD9, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            114, Male, *01.01.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">26.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">8</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">11.07.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">7</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="2" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 746746</td>
+
+<td class="taulu" rowspan="2" valign="middle" align="left">
+    
+
+    
+    155, Female, *10.04.2018, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        CARD9, </td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            114, Male, *01.01.2018, Card9 KO, Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            CARD9 +/-, </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">18.06.2018</td>
+    
+        
+        <td class="taulu" valign="middle">26.08.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">8</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">12.07.2018</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                7</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            7</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">4</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+<tr><td class="taulu" rowspan="4" valign="middle" align="left"> ZKF-BZL,
+    Room U217,
+    Cage 768323</td>
+
+<td class="taulu" rowspan="4" valign="middle" align="left">
+    
+
+    
+    3, Female, *21.02.2017, Card9 KO, Dead
+
+    </td>
+
+
+    <td class="taulu" rowspan="4" valign="middle" align="left">
+        Not defined</td>
+
+
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        
+
+            -, Male, *07.10.2016, B6/J (USA), Dead
+
+            </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            Not defined</td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">21.07.2017</td>
+    
+        
+        <td class="taulu" valign="middle">02.11.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                6</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            6</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">5</td>
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">21.07.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">3</td>
+        <td class="taulu" valign="middle" align="right">2</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+<tr><!-- mating subrow start if bdIndex > 0 -->
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">
+        </td>
+    
+    
+        <td class="taulu" rowspan="2" valign="middle" align="left">
+            </td>
+    
+    
+    <td class="taulu" rowspan="2" valign="middle" align="left">21.04.2017</td>
+    
+        
+        <td class="taulu" valign="middle">15.07.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                5</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            5</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+    <tr><!-- birth date subrow start if litterIndex > 0 -->
+        
+        
+        <td class="taulu" valign="middle">17.05.2017</td>
+        
+            
+            <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+                
+                8</td>
+        
+
+        
+        <td class="taulu" valign="middle" nowrap="nowrap" align="right">
+            8</td>
+        
+        
+        <td class="taulu" valign="middle" align="right">1</td>
+        <td class="taulu" valign="middle" align="right">7</td>
+        <td class="taulu" valign="middle" align="right">0</td></tr>
+    
+
+
+    
+
+
+</tbody></table>
+
+
+       
+        </td>
+  </tr>
+
+</tbody></table>
+
+
+
+
+
+
+</body></html>

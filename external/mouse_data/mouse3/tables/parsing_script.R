@@ -38,34 +38,107 @@ mousepdf_2_table <- function(current_file)
 }
 
 
-
 files_pdf <- list.files(path = "./external/mouse_data/mouse3/", 
                         pattern = ".pdf", full.names = T)
 
+
+
+
+generate_file_name <- function(original_pdf_fname){
+  txt.file.name <- gsub(
+    gsub(original_pdf_fname, 
+         replacement = "_", 
+         pattern = " "),
+    replacement = ".txt", 
+    pattern = ".pdf")
+  return(txt.file.name)
+}
+
+
+grep_strain_name <- function(original_pdf_fname){
+    fname <- strsplit(
+      strsplit(original_pdf_fname, split = "mouse3//")[[1]][2],
+      split = ".pdf")[[1]][1]
+    interne_name <- paste0(unlist(strsplit(
+      strsplit(fname, split=" interne ")[[1]][1], 
+      split = " ")), collapse = "_")
+    irat_name <- paste0(unlist(strsplit(
+      strsplit(interne_name, split="_iRATS_")[[1]][1], 
+      split = " ")), collapse = "_")
+    u219_name <- paste0(unlist(strsplit(
+      strsplit(irat_name, split="_U219_")[[1]][1:2], 
+      split = " ")), collapse = "_")
+    if(grepl(pattern = "_-", u219_name)){
+      underscores_out <- gsub(pattern = "_-", 
+             replacement = "", 
+             x = u219_name)
+      return(underscores_out)
+    }else{
+      return(irat_name)
+    }
+  }
+
+mousebreeding <- lapply(files_pdf, mousepdf_2_table)
+names(mousebreeding) <- sapply(files_pdf, grep_strain_name)
+
+summaryDF <- data.frame(originalPDF = files_pdf, 
+      parsedTBL = sapply(files_pdf, generate_file_name), 
+      strainNameShort = names(mousebreeding)
+)
+mousebreeding <- c(list(summaryDF), mousebreeding)
+names(mousebreeding)[1] <- "summary"
+save(mousebreeding, file = "./external/mouse_data/mouse3/mousebreeding.Rds")
+
+
+for(filename in files_pdf){
+  write.table(
+    mousepdf_2_table(filename), 
+    file = generate_file_name(filename), 
+    row.names = FALSE,
+    quote = FALSE, 
+    sep = '\t')
+}
+
+
+
+
+
+##################################################################
+## file by file checks (only if there is a summary at the bottom)
+###################################################################
+
+# B6cBrd
+files_pdf[[1]]
 df1 <- mousepdf_2_table(files_pdf[[1]])
-sum(as.numeric(df1$pups_born))==629 # never true, i chacked manually - mine is correct
+sum(as.numeric(df1$pups_born))==629 # never true, i checked manually - mine is correct
 sum(as.numeric(df1$pups_beforeW))==565
 sum(as.numeric(df1$weaned_f))==212
 sum(as.numeric(df1$weaned_m))==199
 
 
+# B6D2F1
+files_pdf[[2]]
 df2 <- mousepdf_2_table(files_pdf[[2]])
 sum(as.numeric(df2$pups_born))==5457
 sum(as.numeric(df2$pups_beforeW))==5170
 sum(as.numeric(df2$weaned_f))==2773
 sum(as.numeric(df2$weaned_m))==1936
 
+# B6J CrlF
+files_pdf[[3]]
 df3 <- mousepdf_2_table(files_pdf[[3]])
 sum(as.numeric(df3$pups_born))==2903
 sum(as.numeric(df3$pups_beforeW))==2881
 sum(as.numeric(df3$weaned_f))==1213
 sum(as.numeric(df3$weaned_m))==1136
 
+# B6J Fue
+files_pdf[[4]]
 df4 <- mousepdf_2_table(files_pdf[[4]])
 # no report in the last page
-sum(as.numeric(df4$pups_born))
-sum(as.numeric(df4$pups_beforeW))
 
+# Balbc
+files_pdf[[5]]
 df5 <- mousepdf_2_table(files_pdf[[5]])
 # 777 722   260   290
 sum(as.numeric(df5$pups_born))==777
@@ -73,167 +146,70 @@ sum(as.numeric(df5$pups_beforeW))==722
 sum(as.numeric(df5$weaned_f))==260
 sum(as.numeric(df5$weaned_m))==290
 
+# Card9_KO
+files_pdf[[6]]
 df6 <- mousepdf_2_table(files_pdf[[6]])
-# 1149 1105 374 365    0
-sum(as.numeric(df6$pups_born))==1149
-sum(as.numeric(df6$pups_beforeW))==1105
-sum(as.numeric(df6$weaned_f))==374
-sum(as.numeric(df6$weaned_m))==365
+# no report in the last page
 
+# CD1 old and new
+files_pdf[[7]]
+files_pdf[[8]]
 df7 <- mousepdf_2_table(files_pdf[[7]])
+df8 <- mousepdf_2_table(files_pdf[[8]])
+sum(as.numeric(df8$pups_born))==10531 # here true!!
+sum(as.numeric(df8$pups_beforeW))==9341
+sum(as.numeric(df8$weaned_f))==7417
+sum(as.numeric(df8$weaned_m))==1134
+# CD1 old - no report
+# CD1 new
+# 10531 9341   7417   1134    0
+
+# DBA2 J Fue
+files_pdf[9]
+df9 <- mousepdf_2_table(files_pdf[[9]])
+# 1149 1105 374 365    0
+sum(as.numeric(df9$pups_born))==1149
+sum(as.numeric(df9$pups_beforeW))==1105
+sum(as.numeric(df9$weaned_f))==374
+sum(as.numeric(df9$weaned_m))==365
+
+# FcRn
+files_pdf[10]
+df10 <- mousepdf_2_table(files_pdf[[10]])
 # 4465 4435   2024 529
-sum(as.numeric(df7$pups_born))==4465 # here true!!
-sum(as.numeric(df7$pups_beforeW))==4435
-sum(as.numeric(df7$weaned_f))==2024
-sum(as.numeric(df7$weaned_m))==529
+sum(as.numeric(df10$pups_born))==983 # here true!!
+sum(as.numeric(df10$pups_beforeW))==978
+sum(as.numeric(df10$weaned_f))==471
+sum(as.numeric(df10$weaned_m))==426
 
-generate_file_name <- function(original_pdf_fname){
-    txt.file.name <- gsub(
-        gsub(original_pdf_fname, 
-             replacement = "_", 
-             pattern = " "),
-        replacement = ".txt", 
-        pattern = ".pdf")
-    return(txt.file.name)
-}
+# NMRI
+files_pdf[11]
+df11 <- mousepdf_2_table(files_pdf[[11]])
+# 4465 4435   2024 529
+sum(as.numeric(df11$pups_born))==4465 # here also true!!
+sum(as.numeric(df11$pups_beforeW))==4435
+sum(as.numeric(df11$weaned_f))==2024
+sum(as.numeric(df11$weaned_m))==529
 
-
-for(filename in files_pdf){
-    write.table(
-        mousepdf_2_table(filename), 
-        file = generate_file_name(filename), 
-        row.names = FALSE,
-        quote = FALSE, 
-        sep = '\t')
-}
-
-
-
-
-
-
-
-
-
-# #### manual check ####
-# born_page_1 <- c(8,3,4,5,8,8,8,6,4,6,8,2,2,8,5,8)
-# born_page_2 <- c(4,6,7,5,7,11,10,6,2,2,1,4,3,6,5,1,6,7,10)
-# born_page_3 <- c(6,9,6,1,7,12,6,7,6,10,8,9,3,11,9,10)
-# born_page_4 <- c(8,6,7,4,6,6,7,8,9)
-# born_page_5 <- c(7,6,7,7,6,9,9)
-# born_page_6 <- c(8,6,7,5,5,7,6,6,8,8,7,6,5)
-# born_page_7 <- c(6,3,7,6,5,6)
-# born_page_8 <- c(5,3,6,8,6,8,6,5)
-# 
-# all(extracted_df[1:length(born_page_1), 
-#              "pups_born"]==born_page_1)
-# all(extracted_df[17:(16+length(born_page_2)), 
-#              "pups_born"]==born_page_2)
-# all(extracted_df[36:(35+length(born_page_3)), 
-#              "pups_born"]==born_page_3)
-# all(extracted_df[52:(51+length(born_page_4)), 
-#              "pups_born"]==born_page_4)
-# 
-# all(extracted_df[61:(60+length(born_page_5)), 
-#              "pups_born"]==born_page_5)
-# all(extracted_df[68:(67+length(born_page_6)), 
-#              "pups_born"]==born_page_6)
-# 
-# all(extracted_df[81:(80+length(born_page_7)), 
-#              "pups_born"]==born_page_7)
-# all(extracted_df[87:(86+length(born_page_8)), 
-#              "pups_born"]==born_page_8)
-# 
-# sum(c(born_page_1, 
-#       born_page_2, 
-#       born_page_3, 
-#       born_page_4, 
-#       born_page_5, 
-#       born_page_6, 
-#       born_page_7, 
-#       born_page_8))
-
-
-
-files_pdf <- list.files(path = "./external/mouse_data/mouse2/", 
-                        pattern = ".pdf", full.names = T)
-
-
-cd1_1 <- mousepdf_2_table(current_file = files_pdf[[1]])
-cd1_2 <- mousepdf_2_table(current_file = files_pdf[[2]])
-
-sum(as.numeric(cd1_1$pups_born)) # here no info.. but 64 pages - could there be a problem?
-
-sum(as.numeric(cd1_2$pups_born)) 
-sum(as.numeric(cd1_2$pups_beforeW)) == 9341
-sum(as.numeric(cd1_2$weaned_f)) == 7417
-sum(as.numeric(cd1_2$weaned_m)) == 1134
-
-generate_file_name_txt <- function(original_pdf_fname){
-  txt.file.name <- gsub(
-    gsub(
-      gsub(original_pdf_fname, 
-           replacement = "_", 
-           pattern = " - "),
-      replacement = "_",
-      pattern = " "),
-    replacement = ".txt", 
-    pattern = ".pdf")
-  return(txt.file.name)
-}
-
-generate_file_name_csv <- function(original_pdf_fname){
-  txt.file.name <- gsub(
-    gsub(
-      gsub(original_pdf_fname, 
-           replacement = "_", 
-           pattern = " - "),
-      replacement = "_",
-      pattern = " "),
-    replacement = ".csv", 
-    pattern = ".pdf")
-  return(txt.file.name)
-}
-
-
-
-for(filename in files_pdf){
-  write.table(
-    mousepdf_2_table(filename), 
-    file = generate_file_name_txt(filename), 
-    row.names = FALSE,
-    quote = FALSE, 
-    sep = '\t')
-}
-
-for(filename in files_pdf){
-  write.csv(
-    mousepdf_2_table(filename), 
-    file = generate_file_name_csv(filename), 
-    row.names = FALSE,
-    quote = FALSE)
-}
-
-
-# 10531 9341   7417   1134  
-
-
-# generate_file_name <- function(original_pdf_fname){
-#   txt.file.name <- gsub(
-#     gsub(original_pdf_fname, 
-#          replacement = "_", 
-#          pattern = " "),
-#     replacement = ".txt", 
-#     pattern = ".pdf")
-#   return(txt.file.name)
-# }
-# 
-# 
-# for(filename in files_pdf){
-#   write.table(
-#     mousepdf_2_table(filename), 
-#     file = generate_file_name(filename), 
-#     row.names = FALSE,
-#     quote = FALSE, 
-#     sep = '\t')
-# }
+# strain_names <- c(
+#   sapply(
+#     files_pdf, FUN =function(char_el){
+#       fname <- strsplit(char_el, split = "mouse3//")[[1]][2]
+#       interne_name <- paste0(unlist(strsplit(
+#         strsplit(fname, split=" interne ")[[1]][1], 
+#         split = " ")), collapse = "_")
+#       irat_name <- paste0(unlist(strsplit(
+#         strsplit(interne_name, split="_iRATS_")[[1]][1], 
+#         split = " ")), collapse = "_")
+#       u219_name <- paste0(unlist(strsplit(
+#         strsplit(irat_name, split="_U219_")[[1]][1:2], 
+#         split = " ")), collapse = "_")
+#       if(grepl(pattern = "_-", u219_name)){
+#         underscores_out <- gsub(pattern = "_-", replacement = "", 
+#                                 x = u219_name)
+#         return(underscores_out)
+#       }else{
+#         return(u219_name)
+#       }
+#     }
+#   ))
