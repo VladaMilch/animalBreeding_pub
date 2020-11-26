@@ -1,0 +1,12 @@
+name: shinytry
+title:
+username:
+account: vladamilch
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3307996
+bundleId: 3910522
+url: https://vladamilch.shinyapps.io/shinytry/
+when: 1606430294.69186
+asMultiple: FALSE
+asStatic: FALSE

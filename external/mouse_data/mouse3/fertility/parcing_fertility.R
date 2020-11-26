@@ -26,7 +26,7 @@ files_pdf <-   c(
                           full.names = T)
   )
 
-
+mousepdf_count_females(files_pdf[2])
 
 nfemales <- sapply(files_pdf, mousepdf_count_females)
 # N females from the file: 72 191 119 NA 85 103 58

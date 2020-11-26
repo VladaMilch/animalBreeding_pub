@@ -34,6 +34,12 @@ mousepdf_2_table <- function(current_file)
                            "pups_beforeW",
                            "weaned_f",
                            "weaned_m")
+  
+  extracted_df$pups_born <- as.numeric(extracted_df$pups_born)
+  extracted_df$pups_beforeW <- as.numeric(extracted_df$pups_beforeW)
+  extracted_df$weaned_f <- as.numeric(extracted_df$weaned_f)
+  extracted_df$weaned_m <- as.numeric(extracted_df$weaned_m)
+  
   return(extracted_df)
 }
 
@@ -85,9 +91,7 @@ summaryDF <- data.frame(originalPDF = files_pdf,
       parsedTBL = sapply(files_pdf, generate_file_name), 
       strainNameShort = names(mousebreeding)
 )
-mousebreeding <- c(list(summaryDF), mousebreeding)
-names(mousebreeding)[1] <- "summary"
-save(mousebreeding, file = "./external/mouse_data/mouse3/mousebreeding.Rds")
+save(mousebreeding, summaryDF, file = "./external/mouse_data/mouse3/mousebreeding.Rds")
 
 
 for(filename in files_pdf){

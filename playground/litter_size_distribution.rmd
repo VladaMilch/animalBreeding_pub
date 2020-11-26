@@ -27,38 +27,20 @@ check: Look at the distributions of the litter size (it should look like a
 Poisson, or at least be one-modal). 
 
 ```{r read data in, include=FALSE}
-txt.files <- c(
-  list.files(path = "../external/mouse_data/mouse3/tables/",
-             pattern = ".txt",
-             full.names = T),
-  list.files(path = "../external/mouse_data/mouse2/tables/",
-             pattern = ".txt",
-             full.names = T)
-  )
-
-strain_names <- c(
-  sapply(
-    txt.files[1:7], FUN =function(char_el){
-      fname <- strsplit(char_el, split = "tables//")[[1]][2]
-      strsplit(fname, split="_interne_")[[1]][1]
-      }),
-  "CD1_99_10", 
-  "CD1_10_20")
-
-table_list <- lapply(txt.files, FUN=function(x){
-    tt <- read.table(file = x, 
-             header = T)
-    })
-names(table_list) <- strain_names
+load("../external/mouse_data/mouse3/mousebreeding.Rds")
 ```
 
 
 ```{r print names and histograms}
-names(table_list)
+names(mousebreeding)
+for (ii in 1:length(mousebreeding)){
+  par(mfrow=c(2,2)) 
+  hist(mousebreeding[[ii]]$pups_born, breaks = 20, col = "orange")
+  hist(mousebreeding[[ii]]$pups_beforeW, breaks = 20, col = "red")
+  hist(mousebreeding[[ii]]$weaned_f, breaks = 20, col = "pink")
+  hist(mousebreeding[[ii]]$weaned_f, breaks = 20, col = "blue")
+}
 
-hist(table_list[[2]]$pups_born, breaks = 20, col = "pink")
-
-hist(table_list[[8]]$pups_born, breaks = 25, col = "pink")
 
 ```
 
@@ -85,14 +67,23 @@ table_cleaning <- function(current_table){
     }
 }
 
-table_list_clean <- lapply(table_list, table_cleaning)
+table_list_clean <- lapply(mousebreeding, table_cleaning)
 nlitters <- data.frame( 
-  before = sapply(table_list, nrow), 
+  before = sapply(mousebreeding, nrow), 
   after = sapply(table_list_clean, nrow))
 ```
 
 ```{r}
 nlitters
+names(table_list_clean)
+for (ii in 1:length(table_list_clean)){
+  par(mfrow=c(2,2)) 
+  hist(table_list_clean[[ii]]$pups_born, breaks = 20, col = "orange")
+  hist(table_list_clean[[ii]]$pups_beforeW, breaks = 20, col = "red")
+  hist(table_list_clean[[ii]]$weaned_f, breaks = 20, col = "pink")
+  hist(table_list_clean[[ii]]$weaned_f, breaks = 20, col = "blue")
+}
+
 ```
 
 
@@ -168,6 +159,22 @@ ggarrange(plotlist = hists_list) %>%
 hists_list
 ```
 
+# Litter means etc. by strain
+
+```{r}
+names(table_list_clean)
+mousebreeding_by_strain_clean <- c(
+  table_list_clean[c('B6cBrd', 'B6D2F1', 'B6J_CrlF', 'B6J_Fue', 
+                   'Balbc', 
+                   'Card9_KO', 'DBA2_J_Fue', 'FcRn', 'NMRI')], 
+  list(rbind(table_list_clean[["CD1_1999_2010"]], 
+        table_list_clean[["CD1_2010_2020"]]))
+  )
+names(mousebreeding_by_strain_clean)[length(mousebreeding_by_strain_clean)] <- "CD1"
+
+str(mousebreeding_by_strain_clean)
+```
+
 # Fertility
 
 ```{r}
@@ -175,6 +182,8 @@ load("../external/mouse_data/mouse3/fertility/nfemales.Rdata")
 pre_tab_list <- lapply(
   names(table_list_clean), FUN = function(df_name){
     df <- table_list_clean[[df_name]]
+    originalPDF_file <- summaryDF$originalPDF[which(
+        summaryDF$strainNameShort == df_name)]
     df_clean <- as.data.frame(
       apply(data.frame(df[,2:3]), 
           c(1,2), 
@@ -185,37 +194,42 @@ pre_tab_list <- lapply(
       median(rowmax), 
       max(rowmax), 
       length(rowmax), 
-      nfemales[df_name], 
+      nrow(mousebreeding[[df_name]]),
+      nfemales[originalPDF_file], 
       df_name)
 })
-  
+```
+
+
+
+```{r}
+
+sum(mousebreeding[[4]]$pups_born==0)
 
 
 pre_tab_df <- data.frame(do.call(rbind, pre_tab_list))
-colnames(pre_tab_df) <- c("mean", "median", "max", "n_breedings", "n_fertile", "strain")
+colnames(pre_tab_df) <- c("mean", "median", "max", "n_trust_breedings", "n_tot_breedings","n_fertile", "strain")
 
-fertility <- round(
-  as.numeric(pre_tab_df$n_fertile)/as.numeric(pre_tab_df$n_breedings)*100, 
-  digits = 1)
+#fertility <- round(
+#  as.numeric(pre_tab_df$n_fertile)/as.numeric(pre_tab_df$n_tot_breedings)*100, 
+#  digits = 1)
 
-strain_fertility_litter_df <- data.frame( 
+strain_stats <- data.frame( 
             strain = pre_tab_df[,c("strain")],
-            fertility = fertility,
+            #fertility = fertility,
             litter_mean = as.numeric(pre_tab_df[,c("mean")]),
             litter_median = as.numeric(pre_tab_df[,c("median")]),
             litter_max = as.numeric(pre_tab_df[,c("max")]),
-            n_breedings = as.numeric(pre_tab_df[,c("n_breedings")]),
-            n_fertile = as.numeric(pre_tab_df[,c("n_fertile")])
+            n_trust_breedings = as.numeric(pre_tab_df[,c("n_trust_breedings")]),
+            n_tot_breedings = as.numeric(pre_tab_df[,c("n_tot_breedings")])
+            #n_fertile = as.numeric(pre_tab_df[,c("n_fertile")])
           )
             
-save(strain_fertility_litter_df, file = "strain_fertility_litter_df.RData")
-write.table(strain_fertility_litter_df, file = "strain_fertility_litter_df.txt", 
-            quote = FALSE, sep = "\t", row.names = F, col.names = T)
+save(strain_stats, file = "strain_stats.Rdata")
+write.table(strain_stats, file = "strain_stats.txt", 
+            quote = FALSE, sep = "\t", 
+            row.names = F, col.names = T)
 
-strain_fertility_litter_df
-
-sort(strain_fertility_litter_df$fertility)
-mean(strain_fertility_litter_df$litter_mean)
 
 ```
 

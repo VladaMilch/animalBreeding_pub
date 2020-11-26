@@ -187,6 +187,10 @@ the average litter size is 4. The parameter `genotypes_p=c(0.25, 0.5, 0.25)`
 reflects standard Mendelian probablities for the respective genotypes, 
 and `genotypes_N = c(1,0,0)` specifies the desired number of offsprings.
 
+This is only implemented for the Poisson model at the moment.
+For the Festing model,unfortunately, this is not possible (since Normal 
+distribution cannot be combined with the binomial for the genotype drawing).
+
 ```{r}
 x <- breed_genotype(
     confidence_p = 0.95, 
@@ -196,6 +200,7 @@ x <- breed_genotype(
     litter_mean = 4, 
     method = "poisson")
 x
+
 
 ```
 

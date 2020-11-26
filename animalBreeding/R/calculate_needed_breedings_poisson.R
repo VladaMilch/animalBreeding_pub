@@ -22,8 +22,8 @@ calculate_needed_breedings_poisson <-   function(
     litter_mean,
     search_strarting_point = 1
 ){
-    freqs <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
-    freqs <- freqs/sum(freqs)
+    freqs_r <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
+    freqs <- freqs_r/sum(freqs_r)
     supp1 = as.numeric(c(0, seq(1,round(4*litter_mean))))
     prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
     stopifnot(sum(prob1)==1)
@@ -31,7 +31,11 @@ calculate_needed_breedings_poisson <-   function(
     #search_interval <- seq(1,10)
     doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
     doofN_quantile = 0
-    k=1
+    if(confidence_p>0.5){
+      k= max(round(n_needed/litter_mean)-5, 1)
+    }else{
+      k=1
+    }
     while(doofN_quantile < n_needed){
       #doofN_quantile <- sapply(search_interval, FUN = function(k){distr::convpow(doof1, N=k)@q(condifence_p)})
       doofN_quantile <- distr::convpow(doof1, N=k)@q(1-confidence_p)
