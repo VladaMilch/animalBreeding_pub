@@ -1,7 +1,12 @@
+breed_genotype          Calculate the number of breedings needed to
+                        guarantee a fixed number of offsprings with a
+                        certain probability
 calculate_needed_breedings
                         Calculate the number of breedings needed to
                         guarantee a fixed number of offsprings with a
                         certain probability
+calculate_needed_breedings_poisson
+                        Minimal number of breedings: Poisson
 calculate_needed_breedings_textbook
                         Calculate the number of breedings needed to
                         obtain a fixed numberf of litters with a

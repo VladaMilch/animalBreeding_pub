@@ -1,0 +1,11 @@
+--- re-building ‘my-vignette.Rmd’ using rmarkdown
+Quitting from lines 140-179 (my-vignette.Rmd) 
+Error: processing vignette 'my-vignette.Rmd' failed with diagnostics:
+there is no package called 'MASS'
+--- failed re-building ‘my-vignette.Rmd’
+
+SUMMARY: processing the following file failed:
+  ‘my-vignette.Rmd’
+
+Error: Vignette re-building failed.
+Execution halted

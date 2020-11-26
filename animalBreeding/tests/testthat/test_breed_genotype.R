@@ -108,33 +108,33 @@ test_that("Calculation with 1 genotype agrees with
 })
 
 
-test_that("Calculation with >1 genotype agrees with 
-          empirical sampling: Poisson model", {
-            
-    n_mice = sample(x = c(6:15), size = 1)
-    empitmp <- t(sapply(seq(1:10^5), FUN = function(x){
-    rowSums(sapply(rpois(n = n_mice, # n mice
-                         lambda = 8), 
-                   FUN = function(xx)rmultinom(n = 1, 
-                                               size = xx, 
-                                               prob = c(0.4, 0.6))))
-    }))
-    
-    empi_confidence <- sum(empitmp[,1]>30 & empitmp[,2]>30)/10^5
-    expect_equal(breed_genotype(
-      confidence_p = empi_confidence-0.1^3, 
-      effective_fertility_p = 1,
-      genotypes_p = c(0.4,0.6), 
-      genotypes_N = c(31,31),
-      litter_mean = 8, 
-      method = "poisson"), n_mice)
-    
-    expect_equal(breed_genotype(
-      confidence_p = empi_confidence + 0.1^3, 
-      effective_fertility_p = 1,
-      genotypes_p = c(0.4,0.6), 
-      genotypes_N = c(31,31),
-      litter_mean = 8, 
-      method = "poisson"), n_mice+1)
-
-})
+# test_that("Calculation with >1 genotype agrees with 
+#           empirical sampling: Poisson model", {
+#             
+#     n_mice = sample(x = c(6:15), size = 1)
+#     empitmp <- t(sapply(seq(1:10^5), FUN = function(x){
+#     rowSums(sapply(rpois(n = n_mice, # n mice
+#                          lambda = 8), 
+#                    FUN = function(xx)rmultinom(n = 1, 
+#                                                size = xx, 
+#                                                prob = c(0.4, 0.6))))
+#     }))
+#     
+#     empi_confidence <- sum(empitmp[,1]>30 & empitmp[,2]>30)/10^5
+#     expect_equal(breed_genotype(
+#       confidence_p = empi_confidence-0.1^3, 
+#       effective_fertility_p = 1,
+#       genotypes_p = c(0.4,0.6), 
+#       genotypes_N = c(31,31),
+#       litter_mean = 8, 
+#       method = "poisson"), n_mice)
+#     
+#     expect_equal(breed_genotype(
+#       confidence_p = empi_confidence + 0.1^3, 
+#       effective_fertility_p = 1,
+#       genotypes_p = c(0.4,0.6), 
+#       genotypes_N = c(31,31),
+#       litter_mean = 8, 
+#       method = "poisson"), n_mice+1)
+# 
+# })

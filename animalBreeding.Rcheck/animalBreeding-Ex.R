@@ -32,12 +32,19 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 calculate_needed_breedings(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_needed = 30,
     litter_mean = 7,
-    litter_sd = 2.5
+    litter_sd = 2.5,
     n_litters=10)
+
+
+Minimal number of breedings
+
+Calculates the minimal number of animals to be bred in order
+to achieve a given number of offsprings with a certain confidence, 
+under the one of the models described below.
 
 
 
@@ -59,7 +66,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 calculate_needed_breedings_textbook(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_litters=10)
 
@@ -83,7 +90,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 ### ** Examples
 
 calculate_needed_breedings_textbook(
-    condifence_p=0.95,
+    confidence_p=0.95,
     effective_fertility_p=0.6,
     n_litters=10)
 
