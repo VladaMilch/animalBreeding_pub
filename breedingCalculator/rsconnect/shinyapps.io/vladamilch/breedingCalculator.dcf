@@ -1,0 +1,12 @@
+name: breedingCalculator
+title: breedingCalculator
+username:
+account: vladamilch
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3308170
+bundleId: 3910649
+url: https://vladamilch.shinyapps.io/breedingCalculator/
+when: 1606433494.38565
+asMultiple: FALSE
+asStatic: FALSE

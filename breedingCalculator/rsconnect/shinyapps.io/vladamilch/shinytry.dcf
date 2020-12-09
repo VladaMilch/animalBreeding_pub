@@ -5,8 +5,8 @@ account: vladamilch
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3307996
-bundleId: 3910546
+bundleId: 3910640
 url: https://vladamilch.shinyapps.io/shinytry/
-when: 1606430800.75859
+when: 1606433157.70142
 asMultiple: FALSE
 asStatic: FALSE
