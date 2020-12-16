@@ -9,6 +9,8 @@ breed_genotype <- function(
     effective_fertility_p,
     genotypes_p = c(0.25,0.5,0.25),
     genotypes_N = c(0,0,10),
+    only_Fe_Male = FALSE,
+    fe_male_p = 0.5,
     litter_mean = NULL,
     litter_sd = NULL,
     binomial_p=NULL,
@@ -20,6 +22,10 @@ breed_genotype <- function(
     stopifnot(all(genotypes_N>=0) & sum(genotypes_N)>0)
     stopifnot(confidence_p > 0 & confidence_p < 1)
     stopifnot(effective_fertility_p > 0 & effective_fertility_p <= 1)
+    
+    # additional requirement: by gender
+    stopifnot(is.logical(only_Fe_Male))
+    stopifnot(fe_male_p > 0 & fe_male_p < 1)
     
     stopifnot(is.null(litter_mean) || litter_mean > 0)
     stopifnot(is.null(litter_sd) || litter_sd > 0)
@@ -59,30 +65,12 @@ breed_genotype <- function(
           message="No genotype-specific calculation for method festing")
     }
     
-    confi = 0 # confidence
-    k=1
-    while(confi < confidence_p){
-        doofK <- distr::convpow(doof1, N=k)
-        if(max(doofK@support) <= sum(genotypes_N-1)){
-            k <- k+1
-            next
-        }
-        total_offs_seq <- seq(
-            from = max(sum(genotypes_N-1),0), 
-            to = max(doofK@support), 
-            by = 1)
-        p_genotypes_by_total <- pmultinom::pmultinom(
-            size = total_offs_seq, 
-            lower = genotypes_N-1, # because ksi > lower (not >=)
-            probs = genotypes_p, 
-            method = "exact")
-        d_total <- distr::d(doofK)(total_offs_seq)
-        confi <- sum(p_genotypes_by_total*d_total)
-        #cat(confi)
-        #cat("\n")
-        k <- k+1
-    }
-    return(k-1)
+    res <- conv_k_search(  
+      confidence_p=confidence_p,
+      doof1=doof1,
+      genotypes_N=genotypes_N,
+      genotypes_p=genotypes_p)    
+    return(res)
     
     
 }

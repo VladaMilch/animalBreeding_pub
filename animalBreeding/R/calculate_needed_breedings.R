@@ -63,15 +63,7 @@ calculate_needed_breedings <- function(
     # arguments needed for every function
     stopifnot(confidence_p < 1 & confidence_p > 0)
     stopifnot(is.wholenumber(n_needed) & n_needed > 0)
-    stopifnot(method %in% c("festing", "binomial", "empirical", "poisson"))
-    
-    # stopifnot(confidence_p < 1 & confidence_p > 0)
-    # stopifnot(effective_fertility_p > 0 & effective_fertility_p <=1)
-    # stopifnot(is.wholenumber(n_needed) & n_needed > 0)
-    # stopifnot(all(is.wholenumber(offsprings_n_sample)))
-    # stopifnot(litter_sd > 0)
-    # stopifnot(method %in% c("festing", "binomial", "empirical", "poisson"))
-    
+    stopifnot(method %in% c("festing", "empirical", "poisson"))
     
     if(method=="festing"){
         stopifnot(litter_sd > 0)
@@ -89,16 +81,16 @@ calculate_needed_breedings <- function(
             )
         return(nbre)
     }
-    if(method=="binomial"){
-        stopifnot(litter_mean > 0)
-        nbre <- calculate_needed_breedings_binomial(
-            confidence_p = confidence_p, 
-            effective_fertility_p = effective_fertility_p, 
-            n_needed = n_needed, 
-            litter_mean = litter_mean
-        )
-        return(nbre)
-    }
+    # if(method=="binomial"){
+    #     stopifnot(litter_mean > 0)
+    #     nbre <- calculate_needed_breedings_binomial(
+    #         confidence_p = confidence_p, 
+    #         effective_fertility_p = effective_fertility_p, 
+    #         n_needed = n_needed, 
+    #         litter_mean = litter_mean
+    #     )
+    #     return(nbre)
+    # }
     if(method=="empirical"){
         nbre <- calculate_needed_breedings_empirical(
             confidence_p = confidence_p, 
