@@ -56,31 +56,35 @@ calc_data4fig4 <- function(
   
   reqDF <- data.frame(
     req_pups, req_poisson, req_festing, req_mendel)
+  
   return(reqDF)
 }
   
   
-fe70 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625)[1:2], FUN = function(genoP){
-  calc_data4fig4(
-    req_pups = c(10,20,50,100),
+fe70 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
+  xx <- calc_data4fig4(
+    req_pups = c(10,25,50,75,100,125,150,200,250,300),
     genotype_probability = genoP, 
     confiP = 0.9, 
     effertyP = 0.7, litmean = 7)
+  cat(genoP)
+  cat("")
+  return(xx)
 })
 
 save(fe70, file = "fe70.Rdata")
+# 
+# fe100 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
+#     calc_data4fig4(
+#       req_pups = req_pups_1000,
+#       genotype_probability = genoP, 
+#       confiP = 0.9, 
+#       effertyP = 1, litmean = 7)
+#   })
 
-fe100 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
-    calc_data4fig4(
-      req_pups = req_pups_1000,
-      genotype_probability = genoP, 
-      confiP = 0.9, 
-      effertyP = 1, litmean = 7)
-  })
 
 
-
-fe70[[1]] %>%
+fe70[[5]] %>%
   ggplot(aes(x=req_pups)) + 
   #geom_point(aes(y=req_br_festing50, col = "Festing 50%"), colour = "red", alpha=0.5, size=0.5) + 
   #geom_line(aes(y=req_br_festing50, col = "Festing 50%"), alpha=0.3, size=0.3) + 
@@ -136,3 +140,60 @@ barplot(zz[c(5,6),], beside = TRUE,
         ylab="surplus % breedings", 
         xlab = "number of pups required")
 
+
+
+
+
+
+
+
+
+
+
+
+# calculate surplus of animals:
+# 1st: for a given n breedings, fertility etc. calculate the expected of N born
+# 2nd: 
+
+expect_born_poisson <- function(
+  effective_fertility_p,
+  n_breedings,
+  litter_mean
+){
+  freqs_r <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
+  freqs <- freqs_r/sum(freqs_r)
+  supp1 = as.numeric(c(0, seq(1,round(4*litter_mean))))
+  prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
+  stopifnot(sum(prob1)==1)
+  
+  #search_interval <- seq(1,10)
+  doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
+  doofN <- distr::convpow(doof1, N=n_breedings)
+  return(doofN)
+}
+
+ff <- function(xx){
+  distrConv <- expect_born_poisson(effective_fertility_p = 0.7, n_breedings = xx, litter_mean = 7)
+  plot(distrConv@d(x = distrConv@support))
+  return(  median(distrConv@r(n = 10000) )
+)
+
+}
+
+surplus_animals_born <- 100*(sapply(fe70[[1]]$req_poisson, ff) - fe70[[1]]$req_pups)/  fe70[[1]]$req_pups
+plot(fe70[[1]]$req_pups, surplus_animals_born)
+
+
+
+confidence_grid <- c(0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.975, 0.99)
+req_pups_grid <- c(10,25,50,75,100,125,150,200,250,300)
+gp_grid <- c(1, 0.5, 0.25, 0.125, 0.0625) # genotype probability
+
+
+breed_genotype(confidence_p = 0.5, effective_fertility_p = 0.7, genotypes_p = c(1,0), genotypes_N = c(100,0), litter_mean = 7)
+calculate_needed_breedings(confidence_p = 0.5, effective_fertility_p = 0.7, n_needed = 100, litter_mean = 7, method = "poisson")
+
+
+odin <- generate_poisson_doof1(litter_mean = 7,effective_fertility_p = 0.7)
+svertka <- distr::convpow(odin, N=20)
+1-svertka@p(99)
