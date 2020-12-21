@@ -190,10 +190,42 @@ req_pups_grid <- c(10,25,50,75,100,125,150,200,250,300)
 gp_grid <- c(1, 0.5, 0.25, 0.125, 0.0625) # genotype probability
 
 
-breed_genotype(confidence_p = 0.5, effective_fertility_p = 0.7, genotypes_p = c(1,0), genotypes_N = c(100,0), litter_mean = 7)
-calculate_needed_breedings(confidence_p = 0.5, effective_fertility_p = 0.7, n_needed = 100, litter_mean = 7, method = "poisson")
+breed_genotype(confidence_p = 0.6, effective_fertility_p = 0.7, genotypes_p = c(1,0), genotypes_N = c(200,0), litter_mean = 7)
+calculate_needed_breedings(confidence_p = 0.6, effective_fertility_p = 0.7, n_needed = 200, litter_mean = 7, method = "poisson")
+
+ooo <- sapply(
+  confidence_grid, FUN = function(x){
+    sapply(req_pups_grid, FUN = function(y){
+      calculate_needed_breedings(
+        confidence_p = x, 
+        effective_fertility_p = 0.7, 
+        n_needed = y, 
+        litter_mean = 7, 
+        method = "poisson")
+    })
+  })
+
+data <- expand.grid(X=paste0(confidence_grid*100,"%"), 
+                    Y=as.character(req_pups_grid))
+data$Z <- as.numeric(t(ooo))
+# new column: text for tooltip:
+data <- data %>%
+  mutate(text = paste0("confidence: ", X, "\n", "pups: ", Y, "\n", "breedings: ",round(Z,2), "\n", "What else?"))
+
+# classic ggplot, with text in aes
+p <- ggplot(data, aes(X, Y, fill= Z, text=text)) + 
+  geom_tile() +
+  theme_ipsum()
+
+plotly::ggplotly(p, tooltip="text")
+
+length(confidence_grid)
+colnames(ooo) <- paste0("c",confidence_grid*100)
+rownames(ooo) <- paste0("p",req_pups_grid)
+
+gplots::heatmap.2(ooo,dendrogram='none', Rowv=FALSE, Colv=FALSE,trace='none', )
 
 
-odin <- generate_poisson_doof1(litter_mean = 7,effective_fertility_p = 0.7)
-svertka <- distr::convpow(odin, N=20)
-1-svertka@p(99)
+# odin <- generate_poisson_doof1(litter_mean = 7,effective_fertility_p = 0.7)
+# svertka <- distr::convpow(odin, N=20)
+# 1-svertka@p(99)
