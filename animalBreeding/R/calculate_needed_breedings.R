@@ -63,7 +63,8 @@ calculate_needed_breedings <- function(
     # arguments needed for every function
     stopifnot(confidence_p < 1 & confidence_p > 0)
     stopifnot(is.wholenumber(n_needed) & n_needed > 0)
-    stopifnot(method %in% c("festing", "empirical", "poisson"))
+    stopifnot(method %in% 
+                  c("festing", "empirical", "poisson", "binomial"))
     
     if(method=="festing"){
         stopifnot(litter_sd > 0)
