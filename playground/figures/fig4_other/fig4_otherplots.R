@@ -83,7 +83,7 @@ save(fe70, file = "fe70.Rdata")
 #   })
 
 
-
+load("fe70.Rdata")
 fe70[[5]] %>%
   ggplot(aes(x=req_pups)) + 
   #geom_point(aes(y=req_br_festing50, col = "Festing 50%"), colour = "red", alpha=0.5, size=0.5) + 

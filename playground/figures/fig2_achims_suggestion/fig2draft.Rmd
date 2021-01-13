@@ -1,0 +1,370 @@
+---
+title: "Figure 2 drafts (Achim's suggestion)"
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("animalBreeding")
+library(ggplot2)
+library(ggpubr)
+library(fields)
+source("../fig4_other/helper_functions.R")
+```
+
+There are several options for each figure suggestion.
+
+# Fig. 2A
+
+The level plot reflects the minimal number of breedings (not litters) required to achieve at least X offsprings (x axis) with the success probability Y (y axis). 
+
+
+```{r, eval = TRUE, echo=FALSE}
+ff_A <- function(X, Y){
+  res <- breed_genotype(confidence_p = Y, 
+               effective_fertility_p = 0.7, 
+               genotypes_p = c(0.25,0.5,0.25), genotypes_N = c(X, 0, 0), 
+               litter_mean = 7, method = "poisson")
+  cat(X)
+  cat('\n')
+  cat(Y)
+  cat('\n')
+  cat("####################")
+  cat('\n')
+  cat('\n')
+  return(res)
+}
+
+red_noffs <- seq(2,100,2)
+confi_grid <- c(0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 0.96, 0.97, 0.975, 0.98, 0.985, 0.99, 0.995, 0.999)
+```
+
+```{r, eval = TRUE}
+# warning! long!
+req_breedings <- sapply(red_noffs, function(noff){
+  sapply(confi_grid, function(cc){
+    ff_A(X=noff,Y=cc)
+  })
+})
+
+data4a <- cbind(expand.grid(red_noffs, confi_grid), as.vector(t(req_breedings)))
+colnames(data4a) <- c("offsprings",  "confidence", "breedings")
+save(req_breedings, data4a, file = "data4a.Rdata")
+```
+
+1. Standart plot contour (beware, there is smoothing inside the contour function):
+
+```{r}
+load("data4a.Rdata")
+#par(mfrow = c(1,2))#, mar=c(0,0,0,0), oma=c(0,0,0,0))
+contour(x = red_noffs, y = confi_grid, z = t(req_breedings), 
+        xlab = "required number of offsprings (p=0.25)",
+        ylab = "success probability", ylim = c(0.1, 0.975))
+```
+
+```{r notuse, eval = FALSE}
+# 2. A ggplot contour (also performs smoothing):
+
+plot1 <- ggplot(data4a, aes(x = offsprings, y = confidence, z = breedings)) +
+         geom_contour()
+plot1
+
+# 3. Color map, no smoothing, success probability on the Y axis is presented with even intervals:
+```{r}
+# heat colors plot, with labels on the axes
+par(mar=c(5,4.5,4,7))
+colMap <- colorRampPalette(c("blue","yellow","red" ))(length(unique(req_breedings)))
+sample = t(req_breedings)
+image(sample, axes=F, col=colMap)
+mtext(text=c(paste("",confi_grid)), side=2, line=0.3, at=seq(0,1,1/(length(confi_grid)-1)), las=1, cex=0.8)
+mtext(text=c(paste("offs",red_noffs)), side=1, line=0.3, at=seq(0,1,1/(length(red_noffs)-1)), las=2, cex=0.8)
+image.plot(sample, legend.only=T, col = colMap)
+
+# 4. Color map, no smoothing, success probability on the Y axis is presented with un-even intervals (corresponding to the value):
+# rainbow color plot
+x <- red_noffs
+y <- confi_grid
+z <- t(req_breedings)
+fields::image.plot(
+  x,y,z, 
+  xlab = "Required number of offsprings (p=0.25)",
+  ylab= "Success probability",
+  legend.args=list( text="Required number of breedings",
+                    col="black", cex=0.75, side=2, line=0.35))
+
+```
+
+# Fig. 2C
+
+- Confidence: 90%
+ 
+- Litter mean: 7
+
+- Fertility: 70%
+
+- Probabilities of the genotypes A and B: 25%, 25%
+
+
+```{r}
+offsA = seq(10,100,10)
+offsB = seq(10,100,10)
+df <- expand.grid(offsA, offsB)
+ff_B <- function(nA, nB){
+  breed_genotype(
+    confidence_p = 0.9, 
+    effective_fertility_p = 0.7, 
+    genotypes_p = c(0.25, 0.5, 0.25), genotypes_N = c(nA, 0, nB), 
+    litter_mean = 7)
+}
+```
+
+```{r, eval = FALSE}
+breedingsB <- apply(df, 1, function(x)ff_B(nA = x[1],nB = x[2]))
+dfB <- cbind(df, breedingsB)
+breeM = matrix(breedingsB, nrow = 10, ncol = 10)
+#save(breedingsB, dfB, breeM, file = "data4b.Rdata")
+```
+
+```{r}
+load("data4b.Rdata")
+dfB <- cbind(df, breedingsB)
+breeM = matrix(breedingsB, nrow = 10, ncol = 10)
+#image(breeM)
+contour(x = offsA, y = offsB, z=breeM, 
+        xlab = "required number of offsprings of genotype A (p=0.25)",
+        ylab = "required number of offsprings of genotype B (p=0.25)")
+
+# 
+# require(grDevices) # for colours
+# x <- offsA
+# op <- par(mfrow = c(1, 2))
+# #contour(outer(x, x), method = "edge", vfont = c("sans serif", "plain"))
+# z <- breeM #outer(x, sqrt(abs(x)), FUN = "/")
+# #image(x, x, z)
+# #contour(x, x, z, col = "pink", add = TRUE, method = "edge",
+# #        vfont = c("sans serif", "plain"))
+# contour(x, x, z, 
+#         #method = "simple", 
+#         labcex = 1,
+#         xlab = quote(x[1]), 
+#         ylab = quote(x[2]), 
+#         #method = "edge",
+#         vfont = c("sans serif", "plain"))
+# 
+# contour(x, x, z, nlev = 15, 
+#         lty = 2, method = "simple",
+#         main = "15 levels")
+# par(op)
+```
+
+# Fig 2B
+
+
+```{r}
+
+load("../fig4_other/fe70.Rdata")
+fe70[[5]] %>%
+  ggplot(aes(x=req_pups)) + 
+  #geom_point(aes(y=req_br_festing50, col = "Festing 50%"), colour = "red", alpha=0.5, size=0.5) + 
+  #geom_line(aes(y=req_br_festing50, col = "Festing 50%"), alpha=0.3, size=0.3) + 
+  #geom_point(aes(y=req_br_festing90, col = "Festing 90%")) +
+  geom_point(aes(y= req_poisson, col = "poisson")) + 
+  geom_point(aes(y=req_festing, col = "festing")) + 
+  geom_point(aes(y=req_mendel, col = "mendel")) + 
+  labs(x="Required number of pups", 
+       y = "Smallest number of breedings", 
+       caption = "Mean litter size: 7,  Effective fertility: 70%", 
+       title = "Model comparison for the smallest required number of breegins", colour = "Method") + 
+  theme(legend.position="right") 
+```
+
+```{r}
+xx = fe70[[1]]
+surplus_pois <- round(100*(xx$req_poisson-xx$req_mendel)/xx$req_mendel)
+surplus_fest <- round(100*(xx$req_festing-xx$req_mendel)/xx$req_mendel)
+yy <- data.frame(xx, surplus_pois, surplus_fest)
+
+barplot(yy$surplus_fest, yy$surplus_pois)
+
+library(lattice)
+# barchart(Species~Reason,data=Reasonstats,groups=Catergory, 
+#          scales=list(x=list(rot=90,cex=0.8)))
+# 
+# 
+# Reasonstats <- read.table(text="Category         Reason  Species
+#                                  Decline        Genuine       24
+#                                 Improved        Genuine       16
+#                                 Improved  Misclassified       85
+#                                  Decline  Misclassified       41
+#                                  Decline      Taxonomic        2
+#                                 Improved      Taxonomic        7
+#                                  Decline        Unclear       41
+#                                 Improved        Unclear      117", header=T)
+# 
+# ReasonstatsDec <- Reasonstats[which(Reasonstats$Category=="Decline"),]
+# ReasonstatsImp <- Reasonstats[which(Reasonstats$Category=="Improved"),]
+# Reasonstats3   <- cbind(ReasonstatsImp[,3], ReasonstatsDec[,3])
+# colnames(Reasonstats3) <- c("Improved", "Decline")
+# rownames(Reasonstats3) <- ReasonstatsImp$Reason
+# 
+# #windows()
+# barplot(t(Reasonstats3), beside=TRUE, ylab="number of species", 
+#         cex.names=0.8, las=2, ylim=c(0,120), col=c("darkblue","red"))
+
+zz <- t(yy)
+colnames(zz) <- yy$req_pups
+rownames(zz[c(4,2,3),])
+
+barplot(zz[c(4,2,3),], beside = TRUE, 
+        ylab="required number of of breedings", 
+        xlab = "number of pups required (mendel, pois, festing)")
+
+
+rownames(zz[c(5,6),])
+barplot(zz[c(5,6),], beside = TRUE, 
+        ylab="surplus % breedings relative to Mendel", 
+        xlab = "number of pups required (pois, festing)")
+
+```
+
+```{r, eval = TRUE}
+
+# calculate surplus of animals:
+# 1st: for a given n breedings, fertility etc. calculate the expected of N born
+# 2nd: 
+
+expect_born_poisson <- function(
+  effective_fertility_p,
+  n_breedings,
+  litter_mean
+){
+  freqs_r <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
+  freqs <- freqs_r/sum(freqs_r)
+  supp1 = as.numeric(c(0, seq(1,round(4*litter_mean))))
+  prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
+  stopifnot(sum(prob1)==1)
+  
+  #search_interval <- seq(1,10)
+  doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
+  doofN <- distr::convpow(doof1, N=n_breedings)
+  return(doofN)
+}
+
+ff <- function(xx){
+  distrConv <- expect_born_poisson(effective_fertility_p = 0.7, n_breedings = xx, litter_mean = 7)
+  plot(distrConv@d(x = distrConv@support))
+  return(  median(distrConv@r(n = 10000) )
+)
+
+}
+
+surplus_animals_born <- 100*(sapply(fe70[[1]]$req_poisson, ff) - fe70[[1]]$req_pups)/  fe70[[1]]$req_pups
+plot(fe70[[1]]$req_pups, surplus_animals_born)
+
+
+
+confidence_grid <- c(0.5, 0.7, 0.8, 0.9, 0.95, 0.975)
+req_pups_grid <- c(10,25,50,100,200,300)
+gp_grid <- c(1, 0.5, 0.25, 0.125, 0.0625) # genotype probability
+
+
+breed_genotype(confidence_p = 0.6, effective_fertility_p = 0.7, genotypes_p = c(1,0), genotypes_N = c(200,0), litter_mean = 7)
+calculate_needed_breedings(confidence_p = 0.6, effective_fertility_p = 0.7, n_needed = 200, litter_mean = 7, method = "poisson")
+```
+
+```{r, eval = FALSE}
+ooo <- sapply(
+  confidence_grid, FUN = function(x){
+    sapply(req_pups_grid, FUN = function(y){
+      cat(x);      cat("\n")
+      cat(y);       cat("\n")
+      cat("\n")
+      breed_genotype(
+        confidence_p = x, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(0.25,0.75), genotypes_N = c(y,0),
+        litter_mean = 7, 
+        method = "poisson")
+    })
+  })
+save(ooo, file = "./data4heatmap_surplus.Rdata")
+```
+
+```{r}
+load("data4heatmap_surplus.Rdata")
+data <- expand.grid(X=paste0(confidence_grid*100,"%"), 
+                    Y=as.character(req_pups_grid))
+data$Z <- as.numeric(t(ooo))
+# new column: text for tooltip:
+data <- data %>%
+  mutate(text = paste0("confidence: ", X, "\n", "pups: ", Y, "\n", "breedings: ",round(Z,2), "\n", "What else?"))
+
+# classic ggplot, with text in aes
+p <- ggplot(data, aes(X, Y, fill= Z, text=text)) + 
+  geom_tile() +
+  hrbrthemes::theme_ipsum()
+
+plotly::ggplotly(p, tooltip="text")
+
+length(confidence_grid)
+colnames(ooo) <- paste0("c",confidence_grid*100)
+rownames(ooo) <- paste0("p",req_pups_grid)
+
+gplots::heatmap.2(ooo,dendrogram='none', Rowv=FALSE, Colv=FALSE,trace='none', )
+
+```
+
+# Fig 2D
+
+
+```{r, eval = FALSE}
+req_pups_grid <- seq(1, 50, 5)
+
+data4d <- sapply(req_pups_grid, FUN = function(y){
+      cat(y);       cat("\n")
+      cat("\n")
+      b_only1gender = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(0.5,0.5), genotypes_N = c(2*y,0),
+        litter_mean = 7, 
+        method = "poisson")
+      b_balanced = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(0.5,0.5), genotypes_N = c(y,y),
+        litter_mean = 7, 
+        method = "poisson")
+    b_anygender = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(1,0), genotypes_N = c(2*y,0),
+        litter_mean = 7, 
+        method = "poisson")
+    return(c(b_balanced, b_anygender, b_only1gender))
+    })
+
+rownames(data4d)[1:3] <- c("b_balanced", "b_anygender", "b_only1gender")
+data4d <- rbind(data4d, req_pups_grid)
+data4d_t = t(data4d)[,1:4]
+save(data4d_t, file = "data4d.Rdata")
+data4d_t
+```
+
+
+```{r}
+# not gender, sex!
+
+load("data4d.Rdata")
+data4d_t = data.frame(data4d_t)
+plot(x=data4d_t$req_pups_grid, y = data4d_t$b_only1gender) 
+points(x=data4d_t$req_pups_grid, y = data4d_t$b_anygender, col = "red") 
+points(x=data4d_t$req_pups_grid, y = data4d_t$b_balanced, col = "blue") 
+
+```
