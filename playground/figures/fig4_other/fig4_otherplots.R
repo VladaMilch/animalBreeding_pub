@@ -61,18 +61,18 @@ calc_data4fig4 <- function(
 }
   
   
-fe70 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
-  xx <- calc_data4fig4(
-    req_pups = c(10,25,50,75,100,125,150,200,250,300),
-    genotype_probability = genoP, 
-    confiP = 0.9, 
-    effertyP = 0.7, litmean = 7)
-  cat(genoP)
-  cat("")
-  return(xx)
-})
-
-save(fe70, file = "fe70.Rdata")
+# fe70 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
+#   xx <- calc_data4fig4(
+#     req_pups = c(10,25,50,75,100,125,150,200,250,300),
+#     genotype_probability = genoP, 
+#     confiP = 0.9, 
+#     effertyP = 0.7, litmean = 7)
+#   cat(genoP)
+#   cat("")
+#   return(xx)
+# })
+# 
+# #save(fe70, file = "fe70.Rdata")
 # 
 # fe100 <- lapply(X = c(1, 0.5, 0.25, 0.125, 0.0625), FUN = function(genoP){
 #     calc_data4fig4(
@@ -82,8 +82,9 @@ save(fe70, file = "fe70.Rdata")
 #       effertyP = 1, litmean = 7)
 #   })
 
-
 load("fe70.Rdata")
+names(fe70) <- paste0("genotProbab",c(1, 0.5, 0.25, 0.125, 0.0625))
+
 fe70[[5]] %>%
   ggplot(aes(x=req_pups)) + 
   #geom_point(aes(y=req_br_festing50, col = "Festing 50%"), colour = "red", alpha=0.5, size=0.5) + 
@@ -98,38 +99,61 @@ fe70[[5]] %>%
        title = "Model comparison for the smallest required number of breegins", colour = "Method") + 
   theme(legend.position="right") 
 
-xx = fe70[[1]]
-surplus_pois <- round(100*(xx$req_poisson-xx$req_mendel)/xx$req_mendel)
-surplus_fest <- round(100*(xx$req_festing-xx$req_mendel)/xx$req_mendel)
-yy <- data.frame(xx, surplus_pois, surplus_fest)
 
-barplot(yy$surplus_fest, yy$surplus_pois)
+ff_sup_df2plot <- function(xx){
+#  xx = fe70[[1]]
+  surplus_pois <- round(100*(xx$req_poisson-xx$req_mendel)/xx$req_mendel)
+  surplus_fest <- round(100*(xx$req_festing-xx$req_mendel)/xx$req_mendel)
+  
+  # total pups born
+  t(sapply(xx$req_poisson, ff)[2:4,]) # 50%, 90%, 95%
+  total_pups <- data.frame(t(sapply(xx$req_poisson, ff)[2:4,]))
+  colnames(total_pups) <- c("born_median","born_q90","born_q95")
+  
+  surplus_percentage_born_average <- 100*(total_pups$born_median - xx$req_pups)/xx$req_pups
+  # resulting df
+  yy <- data.frame(xx, surplus_pois, surplus_fest, total_pups, surplus_percentage_born_average)  
+  return(yy)
+}
 
-library(lattice)
-barchart(Species~Reason,data=Reasonstats,groups=Catergory, 
-         scales=list(x=list(rot=90,cex=0.8)))
+fe70_df2plot <- lapply(fe70, ff_sup_df2plot)
+names(fe70_df2plot)[[3]]
+fe70_df2plot[[3]]
+ppp1 <- ggplot(fe70_df2plot[[1]], 
+              aes(x=req_pups)) +
+  geom_point(aes(y= req_poisson, col = "poisson")) + 
+  geom_point(aes(y=req_festing, col = "festing")) + 
+  geom_point(aes(y=req_mendel, col = "mendel")) + 
+  theme_pubr() 
+
+ppp1
 
 
-Reasonstats <- read.table(text="Category         Reason  Species
-                                 Decline        Genuine       24
-                                Improved        Genuine       16
-                                Improved  Misclassified       85
-                                 Decline  Misclassified       41
-                                 Decline      Taxonomic        2
-                                Improved      Taxonomic        7
-                                 Decline        Unclear       41
-                                Improved        Unclear      117", header=T)
-
-ReasonstatsDec <- Reasonstats[which(Reasonstats$Category=="Decline"),]
-ReasonstatsImp <- Reasonstats[which(Reasonstats$Category=="Improved"),]
-Reasonstats3   <- cbind(ReasonstatsImp[,3], ReasonstatsDec[,3])
-colnames(Reasonstats3) <- c("Improved", "Decline")
-rownames(Reasonstats3) <- ReasonstatsImp$Reason
+# library(lattice)
+# barchart(Species~Reason,data=Reasonstats,groups=Catergory, 
+#          scales=list(x=list(rot=90,cex=0.8)))
+# 
+# 
+# Reasonstats <- read.table(text="Category         Reason  Species
+#                                  Decline        Genuine       24
+#                                 Improved        Genuine       16
+#                                 Improved  Misclassified       85
+#                                  Decline  Misclassified       41
+#                                  Decline      Taxonomic        2
+#                                 Improved      Taxonomic        7
+#                                  Decline        Unclear       41
+#                                 Improved        Unclear      117", header=T)
+# 
+# ReasonstatsDec <- Reasonstats[which(Reasonstats$Category=="Decline"),]
+# ReasonstatsImp <- Reasonstats[which(Reasonstats$Category=="Improved"),]
+# Reasonstats3   <- cbind(ReasonstatsImp[,3], ReasonstatsDec[,3])
+# colnames(Reasonstats3) <- c("Improved", "Decline")
+# rownames(Reasonstats3) <- ReasonstatsImp$Reason
 
 #windows()
-barplot(t(Reasonstats3), beside=TRUE, ylab="number of species", 
-        cex.names=0.8, las=2, ylim=c(0,120), col=c("darkblue","red"))
-
+# barplot(t(Reasonstats3), beside=TRUE, ylab="number of species", 
+#         cex.names=0.8, las=2, ylim=c(0,120), col=c("darkblue","red"))
+# 
 zz <- t(yy)
 colnames(zz) <- yy$req_pups
 barplot(zz[c(4,2,3),], beside = TRUE, 
@@ -151,81 +175,3 @@ barplot(zz[c(5,6),], beside = TRUE,
 
 
 
-# calculate surplus of animals:
-# 1st: for a given n breedings, fertility etc. calculate the expected of N born
-# 2nd: 
-
-expect_born_poisson <- function(
-  effective_fertility_p,
-  n_breedings,
-  litter_mean
-){
-  freqs_r <- dpois(x = seq(1,round(4*litter_mean), 1), lambda = litter_mean)
-  freqs <- freqs_r/sum(freqs_r)
-  supp1 = as.numeric(c(0, seq(1,round(4*litter_mean))))
-  prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
-  stopifnot(sum(prob1)==1)
-  
-  #search_interval <- seq(1,10)
-  doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
-  doofN <- distr::convpow(doof1, N=n_breedings)
-  return(doofN)
-}
-
-ff <- function(xx){
-  distrConv <- expect_born_poisson(effective_fertility_p = 0.7, n_breedings = xx, litter_mean = 7)
-  plot(distrConv@d(x = distrConv@support))
-  return(  median(distrConv@r(n = 10000) )
-)
-
-}
-
-surplus_animals_born <- 100*(sapply(fe70[[1]]$req_poisson, ff) - fe70[[1]]$req_pups)/  fe70[[1]]$req_pups
-plot(fe70[[1]]$req_pups, surplus_animals_born)
-
-
-
-confidence_grid <- c(0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.975, 0.99)
-req_pups_grid <- c(10,25,50,75,100,125,150,200,250,300)
-gp_grid <- c(1, 0.5, 0.25, 0.125, 0.0625) # genotype probability
-
-
-breed_genotype(confidence_p = 0.6, effective_fertility_p = 0.7, genotypes_p = c(1,0), genotypes_N = c(200,0), litter_mean = 7)
-calculate_needed_breedings(confidence_p = 0.6, effective_fertility_p = 0.7, n_needed = 200, litter_mean = 7, method = "poisson")
-
-ooo <- sapply(
-  confidence_grid, FUN = function(x){
-    sapply(req_pups_grid, FUN = function(y){
-      calculate_needed_breedings(
-        confidence_p = x, 
-        effective_fertility_p = 0.7, 
-        n_needed = y, 
-        litter_mean = 7, 
-        method = "poisson")
-    })
-  })
-
-data <- expand.grid(X=paste0(confidence_grid*100,"%"), 
-                    Y=as.character(req_pups_grid))
-data$Z <- as.numeric(t(ooo))
-# new column: text for tooltip:
-data <- data %>%
-  mutate(text = paste0("confidence: ", X, "\n", "pups: ", Y, "\n", "breedings: ",round(Z,2), "\n", "What else?"))
-
-# classic ggplot, with text in aes
-p <- ggplot(data, aes(X, Y, fill= Z, text=text)) + 
-  geom_tile() +
-  theme_ipsum()
-
-plotly::ggplotly(p, tooltip="text")
-
-length(confidence_grid)
-colnames(ooo) <- paste0("c",confidence_grid*100)
-rownames(ooo) <- paste0("p",req_pups_grid)
-
-gplots::heatmap.2(ooo,dendrogram='none', Rowv=FALSE, Colv=FALSE,trace='none', )
-
-
-# odin <- generate_poisson_doof1(litter_mean = 7,effective_fertility_p = 0.7)
-# svertka <- distr::convpow(odin, N=20)
-# 1-svertka@p(99)
