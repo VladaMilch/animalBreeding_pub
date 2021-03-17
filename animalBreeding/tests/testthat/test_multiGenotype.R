@@ -82,7 +82,6 @@ test_that("Failing gracefully: balanced gender scenario requires even numbers",{
   )
 })
 
-
 test_that("Correct calculation: balanced",{
   
   expect_equal(
@@ -93,7 +92,7 @@ test_that("Correct calculation: balanced",{
       genotypes_N = c(0,100), 
       sex_distribution = "balanced", 
       litter_mean = 6
-    ),
+    )$required_breedings,
     multiGenotype(
       confidence_p = 0.8, 
       birth_days = 3, 
@@ -101,7 +100,7 @@ test_that("Correct calculation: balanced",{
       genotypes_N = c(50,50), 
       sex_distribution = "unimportant", 
       litter_mean = 6
-    )
+    )$required_breedings
   )
   
   expect_equal(
@@ -112,7 +111,7 @@ test_that("Correct calculation: balanced",{
       genotypes_N = c(10,16,14,12), 
       sex_distribution = "balanced", 
       litter_mean = 6
-    ),
+    )$required_breedings,
     multiGenotype(
       confidence_p = 0.8, 
       birth_days = 3, 
@@ -120,7 +119,7 @@ test_that("Correct calculation: balanced",{
       genotypes_N = c(5,5,8,8,7,7,6,6), 
       sex_distribution = "unimportant", 
       litter_mean = 6
-    )
+    )$required_breedings
   )
   
 })
@@ -135,15 +134,15 @@ test_that("Correct calculation: all one sex",{
       genotypes_N = c(0,20), 
       sex_distribution = "all one sex", 
       litter_mean = 6
-    ),
+    )$required_breedings,
     multiGenotype(
       confidence_p = 0.8, 
       birth_days = 3, 
-      genotypes_p = c(0.5,0.5), 
-      genotypes_N = c(0,20), 
+      genotypes_p = c(0, 0, 0.5, 0.5), 
+      genotypes_N = c(0, 0, 0, 20), 
       sex_distribution = "unimportant", 
       litter_mean = 6
-    )
+    )$required_breedings
   )
   
   expect_equal(
@@ -154,7 +153,7 @@ test_that("Correct calculation: all one sex",{
       genotypes_N = c(10, 16), 
       sex_distribution = "all one sex", 
       litter_mean = 6
-    ),
+    )$required_breedings,
     multiGenotype(
       confidence_p = 0.8, 
       birth_days = 3, 
@@ -162,9 +161,40 @@ test_that("Correct calculation: all one sex",{
       genotypes_N = c(0, 10, 0, 16), 
       sex_distribution = "unimportant", 
       litter_mean = 6
-    )
+    )$required_breedings
   )
   
 })
 
-
+test_that("Correct class object returned",{
+  
+  # only the required breedings printed
+  expect_identical(
+    capture_output_lines(
+      multiGenotype(
+        confidence_p = 0.8, 
+        birth_days = 3, 
+        genotypes_p = c(0,1), 
+        genotypes_N = c(0,20), 
+        sex_distribution = "all one sex", 
+        litter_mean = 6
+        ), 
+      print=TRUE), 
+    "[1] 14")
+  
+  mm <- multiGenotype(
+    confidence_p = 0.8, 
+    birth_days = 3, 
+    genotypes_p = c(0,1), 
+    genotypes_N = c(0,20), 
+    sex_distribution = "all one sex", 
+    litter_mean = 6)
+  
+  expect_equal(mm$confidence_p  , 0.8)
+  expect_equal(mm$required_breedings, 14)
+  expect_equal(mm$if_balanced_sex, FALSE)
+  expect_equal(mm$if_onesex, TRUE)
+  
+  
+  
+})
