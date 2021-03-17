@@ -7,15 +7,23 @@ conv_k_search <- function(
   genotypes_p,
   largest_step_size = 32 # must be 2^
 ){
+  # choose the starting k wisely: Needed for large breedings
+  mm = max(median(doof1@r(100)), 1) #sometimes median=0...
   k = max(1, 
-          floor(sum(genotypes_N)/median(doof1@r(100))) - largest_step_size)
+          floor(sum(genotypes_N)/mm) - largest_step_size)
   step_size = largest_step_size
 
+  # 1 breeding is enough (k=1)
   confi_low <- calculate_confi(k=k, 
                                doof1=doof1, 
                                genotypes_N=genotypes_N, 
                                genotypes_p=genotypes_p)
-    
+  if(confi_low >= confidence_p)
+  {
+    return(1)
+  }
+  
+  # more than 1 breedings needed (k>1)
   while(confi_low < confidence_p){
     confi_hig <- calculate_confi(k=k+step_size, 
                                    doof1=doof1, 
@@ -45,34 +53,37 @@ conv_k_search <- function(
                        doof1=doof1, 
                        genotypes_N=genotypes_N, 
                        genotypes_p=genotypes_p)
-  stopifnot(aa >= confidence_p & bb <confidence_p)
+  stopifnot( (aa >= confidence_p & bb <confidence_p) || aa >= 1)
   return(res)
 }
 
 calculate_confi <- function(
-  k,
-  doof1,
-  genotypes_N,
-  genotypes_p
+  k, # breedings
+  doof1, # offspring distribution for 1 mouse
+  genotypes_N, # required Ns
+  genotypes_p # required Ps
 ){
   doofK <- distr::convpow(doof1, N=k)
   
   if(sum(genotypes_N-1) >= max(doofK@support))
-  {
+  { # if required more than theoretically can be born
+    # confidence = 0
     return(0)
   }
   
+  # input n for the multinomial (total trials)
   total_offs_seq <- seq(
     from = max(sum(genotypes_N-1),0), 
     to = max(doofK@support), 
     by = 1)
+  # 
   p_genotypes_by_total <- pmultinom::pmultinom(
     size = total_offs_seq, 
     lower = genotypes_N-1, # because ksi > lower (not >=)
     probs = genotypes_p, 
     method = "exact")
-  d_total <- distr::d(doofK)(total_offs_seq)
-  confi <- sum(p_genotypes_by_total*d_total)
+  d_total <- distr::d(doofK)(total_offs_seq) # pmf needed born of total
+  confi <- sum(p_genotypes_by_total*d_total) # sum_total (p_total * p_needed_born)
   return(confi)
 }
 

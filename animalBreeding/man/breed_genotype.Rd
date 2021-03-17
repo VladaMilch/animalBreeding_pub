@@ -10,6 +10,8 @@ breed_genotype(
   effective_fertility_p,
   genotypes_p = c(0.25, 0.5, 0.25),
   genotypes_N = c(0, 0, 10),
+  only_Fe_Male = FALSE,
+  fe_male_p = 0.5,
   litter_mean = NULL,
   litter_sd = NULL,
   binomial_p = NULL,

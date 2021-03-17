@@ -1,7 +1,7 @@
 #' Calculate the number of breedings needed to guarantee a fixed number of
 #' offsprings with a certain probability
 #'
-#' At the moment only one model is implemented (the textbook).
+#' At the moment only one model is implemented
 #'
 #' @param confidence_p a number between 0 and 1
 #' @param effective_fertility_p a number between 0 and 1
@@ -45,11 +45,9 @@
 #' preferably, this should be a large sample
 #' @param litter_sd standard deviation of the litter size, needed for method 
 #' value "festing"
-#' @param method can be "festing", "poisson", "binomial" or "empirical"
+#' @param method can be "festing", "poisson" or "empirical" # keep pnly poisson? @TODO
 #' @param calculation_type 
 #'
-#' @return
-#' @export
 calculate_needed_breedings <- function(
     confidence_p,
     effective_fertility_p,
@@ -112,3 +110,6 @@ calculate_needed_breedings <- function(
         return(nbre)
     }
 }
+
+
+# @TODO same input - animals born as output: move expect_born_poisson here 

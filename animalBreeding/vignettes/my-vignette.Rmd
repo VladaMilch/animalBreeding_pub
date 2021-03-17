@@ -39,7 +39,28 @@ At the moment, the package repository is private, therefore
 the installation will only work with the `auth_token` argument. 
 Later it will be replaced.
 
-# Usage
+# Usage (simple)
+
+
+```{r}
+n_breedings <- singleGenotype(
+  confidence_p = 0.95, 
+  birth_days = 3, 
+  n_offsprings = 20, 
+  litter_mean = 6)
+
+n_breedings
+
+n_breedings <- multi(
+  confidence_p = 0.95, 
+  birth_days = 3, 
+  n_offsprings = 20, 
+  litter_mean = 6)
+
+n_breedings
+```
+
+# Usage (not as simple)
 
 For instance, we need 200 offsprings, and we know the following: 
 

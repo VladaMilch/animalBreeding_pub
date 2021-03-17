@@ -8,7 +8,9 @@ calculate_needed_breedings_empirical <- function(
     freqs <- table(offsprings_n_sample)/length(offsprings_n_sample)
     supp1 = as.numeric(c(0, names(freqs)))
     prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
-    stopifnot(sum(prob1)==1)
+    
+    tol = 0.1^5
+    stopifnot( abs( sum(prob1)-1) < tol )
     
     #search_interval <- seq(1,10)
     doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
