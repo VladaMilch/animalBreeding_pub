@@ -87,6 +87,8 @@ sum(as.numeric(df7$pups_beforeW))==4435
 sum(as.numeric(df7$weaned_f))==2024
 sum(as.numeric(df7$weaned_m))==529
 
+df8 <- mousepdf_2_table(files_pdf[[8]])
+
 generate_file_name <- function(original_pdf_fname){
     txt.file.name <- gsub(
         gsub(original_pdf_fname, 

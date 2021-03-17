@@ -1,6 +1,12 @@
 ---
 title: "Litter size and fertility: Learning from the data"
-output: pdf_document
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
 ---
 
 ```{r setup, include=FALSE}
@@ -33,15 +39,26 @@ load("../external/mouse_data/mouse3/mousebreeding.Rds")
 
 ```{r print names and histograms}
 names(mousebreeding)
+mousebreeding <- lapply(mousebreeding, FUN = function(df){
+  df = data.frame(df)
+  df$pups_born <- as.numeric(df$pups_born)
+  df$pups_beforeW <- as.numeric(df$pups_beforeW)
+  df$weaned_f <- as.numeric(df$weaned_f)
+  df$weaned_m <- as.numeric(df$weaned_m)
+  return(df)
+})
+
+
 for (ii in 1:length(mousebreeding)){
   par(mfrow=c(2,2)) 
   hist(mousebreeding[[ii]]$pups_born, breaks = 20, col = "orange")
   hist(mousebreeding[[ii]]$pups_beforeW, breaks = 20, col = "red")
   hist(mousebreeding[[ii]]$weaned_f, breaks = 20, col = "pink")
-  hist(mousebreeding[[ii]]$weaned_f, breaks = 20, col = "blue")
+  hist(mousebreeding[[ii]]$weaned_m, breaks = 20, col = "blue")
 }
 
-
+head(mousebreeding[[2]])
+names(mousebreeding)
 ```
 
 Quite often, only pups of one particular gender are required for the experiment.
@@ -71,6 +88,9 @@ table_list_clean <- lapply(mousebreeding, table_cleaning)
 nlitters <- data.frame( 
   before = sapply(mousebreeding, nrow), 
   after = sapply(table_list_clean, nrow))
+head(table_list_clean[[1]])
+save(table_list_clean, 
+     file = "./figures/figsSupplementary/litter_size_data_from_pdfs.Rdata")
 ```
 
 ```{r}
@@ -103,7 +123,8 @@ hists_list <- lapply(names(table_list_clean),
 
   # can be changed to pups_born or pups_beforeW
   # xx <- rowmax
-  xx <- df_clean$pups_beforeW
+  xxx <- df_clean$pups_beforeW
+  xx <- xxx[which(xxx!=0)]
   support <- seq(0, max(xx)+1)
 
   fitNB <- MASS::fitdistr(x = xx, 
@@ -167,17 +188,38 @@ noisy.. Well, for now this is a fine criteria.
 ```{r}
 # "B6cBrd"        "B6D2F1"        "B6J_CrlF"      "B6J_Fue"       "Balbc"         "Card9_KO"      "CD1_1999_2010" "CD1_2010_2020"
  # [9] "DBA2_J_Fue"    "FcRn"          "NMRI"  
+names(table_list_clean)
+```
+
+```{r}
+# some files need to be merged: Because thery are one strain, just from 
+# different sources; THe following need to be merged:
+# B6J_CrlF and B6J_CrlF
+# CD1_1999_2010 and CD1_2010_2020
+# I will add them as separate new instances,
+# in the end of the full list
 table_list_merged <- list()
-table_list_merged[1:2] <- table_list_clean[1:2]
-table_list_merged[[3]] <- rbind(table_list_clean[["B6J_CrlF"]],table_list_clean[["B6J_Fue"]])
-table_list_merged[4:8] <- table_list_clean[c("Balbc","Card9_KO","DBA2_J_Fue","FcRn","NMRI")]
-table_list_merged[[9]] <- rbind(table_list_clean[["CD1_1999_2010"]],table_list_clean[["CD1_2010_2020"]])
+table_list_merged <- table_list_clean
+length(table_list_merged)
+names(table_list_merged) <- names(table_list_clean)
+```
 
-names(table_list_merged) <- c(names(table_list_clean[1:2]),
-                              "B6J",
-                              c("Balbc","Card9_KO","DBA2_J_Fue","FcRn","NMRI"),
-                              "CD1")
+```{r}
+table_list_merged[[ length(table_list_clean)+1 ]] <- 
+  rbind(table_list_clean[["B6J_CrlF"]],
+        table_list_clean[["B6J_Fue"]])
+names(table_list_merged)[ length(table_list_clean)+1 ] <- "B6J"
 
+
+table_list_merged[[ length(table_list_clean)+2 ]] <- 
+  rbind(table_list_clean[["CD1_1999_2010"]],
+        table_list_clean[["CD1_2010_2020"]])
+names(table_list_merged)[ length(table_list_clean)+2 ] <- "CD1"
+
+names(table_list_merged)
+```
+
+```{r}
 data4histo <- lapply(names(table_list_merged), 
                      FUN=function(df_name){
                        
@@ -238,10 +280,25 @@ data4histo <- lapply(names(table_list_merged),
   # 
 })
 names(data4histo) <- names(table_list_merged)
-df4histo <- do.call(
-  "rbind",
-  data4histo[1:7]) # excluded NMRI and CD1 aas they are not looking as Poisson
+```
 
+```{r}
+chosen_strains <- c(
+  "2d2_LASC_V1",
+  "B6cBrd",
+  "B6D2F1",
+  "Balbc",
+  "Card9_KO",
+  "DBA2_J_Fue",
+  "FcRn",
+  # "NMRI",
+  # "CD1"
+  "B6J")
+# excluded NMRI and CD1 aas they are not looking as Poisson
+df4histo_chosen <- do.call(
+  "rbind",
+  data4histo[chosen_strains]) 
+names(data4histo)
 ```
 
 ```{r}
@@ -251,11 +308,12 @@ library(viridis)
 library(forcats)
 library(plyr)
 
-df4histo$strain 
-df4histo <- arrange(df4histo, nlitters)
+df4histo_chosen$strain 
+df4histo_chosen <- arrange(df4histo_chosen, nlitters)
 # B6cBrd Balbc FcRn DBA2_J_Fue Card9_KO B6D2F1 B6J
-df4histo$strain <- plyr::revalue(df4histo$strain, 
+df4histo_chosen$strain <- plyr::revalue(df4histo_chosen$strain, 
         c("B6cBrd"="B6 Albino ", 
+          "2d2_LASC_V1"="2d2",
           "Balbc"="BALB/cJ", 
           "FcRn"="FcRn",
           "B6J"="C57BL/6J",
@@ -263,9 +321,10 @@ df4histo$strain <- plyr::revalue(df4histo$strain,
           "Card9_KO"="Card9 KO",
           "B6D2F1"="BD2F1 "
           ))
-df4histo$strain <- reorder(df4histo$strain, df4histo$nlitters)
+df4histo_chosen$strain <- reorder(df4histo_chosen$strain, 
+                                  df4histo_chosen$nlitters)
 
-fig4a <- df4histo %>%
+fig4a <- df4histo_chosen %>%
   ggplot( aes(x=support, color=strain, fill=strain)) +
     geom_bar(aes(y=freqs), stat = "identity", width = 0.5) + 
     scale_fill_viridis(discrete=TRUE) +
@@ -283,9 +342,9 @@ fig4a <- df4histo %>%
   #labs(caption = paste0("Number of litters: ", nlitters))) +
     #xlab("Number of pups in a litter") +
     #ylab("Frequency") +
-    facet_wrap(~strain)
+    facet_wrap(~strain*nlitters, ncol = 4)
 
-fig4a_withlabels <- df4histo %>%
+fig4a_withlabels <- df4histo_chosen %>%
   ggplot( aes(x=support, color=strain, fill=strain)) +
     geom_bar(aes(y=freqs), stat = "identity", width = 0.5) + 
     scale_fill_viridis(discrete=TRUE) +
@@ -300,20 +359,24 @@ fig4a_withlabels <- df4histo %>%
     ) +
     xlab("Number of pups in a litter;  NB fit: red, Poison fit: black") +
     ylab("Frequency") +
-    facet_wrap(~strain*nlitters)
+    facet_wrap(~strain*nlitters, ncol = 4)
+
+fig4a_withlabels
+fig4a
 ```
 
 
 
 
 ```{r, eval = FALSE}
-pdf("./figures/fig4A/fig4a_nolabels.pdf")
-print(fig4a)
-dev.off()
-
-pdf("./figures/fig4A/fig4a_withlabels.pdf")
-print(fig4a_withlabels)
-dev.off()
+ggsave(
+  fig4a, 
+  filename = "./figures/figsSupplementary/litter_size_histograms_nolabels.pdf", 
+  width = 8, height = 5)
+ggsave(
+  fig4a_withlabels, 
+  filename = "./figures/figsSupplementary/litter_size_histograms_wlabels.png", 
+  width = 8, height = 5)
 ```
 
 

@@ -1,4 +1,5 @@
 strain	litter_mean	litter_median	litter_max	n_trust_breedings	n_tot_breedings
+2d2_LASC_V1	6.7	7	19	612	678
 B6cBrd	6.8	7	12	77	94
 B6D2F1	8.1	8	18	565	721
 B6J_CrlF	6.4	7	13	444	483
