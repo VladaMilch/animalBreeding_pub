@@ -1,0 +1,110 @@
+---
+title: "Figure 2D"
+author: "Vlada Milchevskaya"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("animalBreeding")
+library(ggplot2)
+library(ggpubr)
+library(fields)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+library(ggplot2)
+library(directlabels)
+source("../helper_function_fig2.R")
+```
+
+
+
+# Fig 2D
+
+Minimal number of breedings (Poisson, i.e. our method) on Y axis, 
+needed to get X offsprings:
+
+- X/2 male and X/2 female
+
+- X of any sex
+
+- X of the same sex 
+
+Required confidence: 90%
+
+Mean litter size: 7
+
+Effective fertility: 70%
+
+
+```{r, eval = FALSE}
+req_pups_grid <- seq(2, 100, 1)
+
+data4d <- sapply(req_pups_grid, FUN = function(y){
+      cat(y);       cat("\n")
+      cat("\n")
+      b_only1sex = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(0.5,0.5), genotypes_N = c(2*y,0),
+        litter_mean = 7, 
+        method = "poisson")
+      b_balanced = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(0.5,0.5), genotypes_N = c(y,y),
+        litter_mean = 7, 
+        method = "poisson")
+    b_anysex = breed_genotype(
+        confidence_p = 0.9, 
+        effective_fertility_p = 0.7, 
+        genotypes_p = c(1,0), genotypes_N = c(2*y,0),
+        litter_mean = 7, 
+        method = "poisson")
+    return(c(b_balanced, b_anysex, b_only1sex))
+    })
+
+rownames(data4d)[1:3] <- c("b_balanced", "b_anysex", "b_only1sex")
+data4d <- rbind(data4d, req_pups_grid)
+data4d_t = t(data4d)[,1:4]
+save(data4d_t, file = "data4d.Rdata")
+```
+
+
+```{r}
+load("data4d.Rdata")
+data4d_t = data.frame(data4d_t)
+plot(x=data4d_t$req_pups_grid, y = data4d_t$b_only1sex) 
+points(x=data4d_t$req_pups_grid, y = data4d_t$b_anysex, col = "red") 
+points(x=data4d_t$req_pups_grid, y = data4d_t$b_balanced, col = "blue") 
+
+pp <- 
+  ggplot(data = data4d_t[1:50,] , aes(x=req_pups_grid*2)) + 
+  geom_point(aes(y= b_only1sex, col = "all F/ all M")) + 
+  geom_point(aes(y=b_anysex, col = "F + M = Total")) + 
+  geom_point(aes(y=b_balanced, col = "F = M = Total/2")) + 
+  # labs(x="Required number of pups", 
+  #      y = "Smallest number \n of breedings", 
+  #      caption = "Mean litter size: 7,  Effective fertility: 70%", 
+  #      title = "Model comparison for the smallest required number of breegins", colour = "Method") + 
+  labs(x='',y='',title='',colour = "Offspring sex") +
+  theme_pubr()   + theme(legend.position="right") + 
+  theme(legend.position = c(0.3,0.8))
+
+plot2D <- pp + scale_x_continuous(name="Total # offsprings", 
+                                  limits=c(0, 102), breaks = seq(0,100,10)) 
+plot2Dann <- plot2D +   labs(
+       y = "Smallest number \n of breedings",
+       caption = "Mean litter size: 7,  Effective fertility: 70%, Confidence level: 90%")
+plot2Dann
+ggsave(plot2Dann, file = "plot2D_annotated.pdf")
+save(plot2Dann, file = "gg_plot_2D.Rdata")
+
+```
+

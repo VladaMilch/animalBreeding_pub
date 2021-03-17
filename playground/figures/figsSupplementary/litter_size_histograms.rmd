@@ -1,0 +1,215 @@
+---
+title: "Litter size and fertility: Learning from the data"
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(ggpubr)
+options(stringsAsFactors = FALSE)
+```
+
+## Pretty histograms figure
+
+We chose only those strains that look like a proper Poisson - because others are
+noisy.. Well, for now this is a fine criteria.
+
+```{r, include = T}
+load("litter_size_data_from_pdfs.Rdata")
+names(table_list_clean)
+```
+
+```{r}
+# some files need to be merged: Because thery are one strain, just from 
+# different sources; THe following need to be merged:
+# B6J_CrlF and B6J_CrlF
+# CD1_1999_2010 and CD1_2010_2020
+# I will add them as separate new instances,
+# in the end of the full list
+table_list_merged <- list()
+table_list_merged <- table_list_clean
+length(table_list_merged)
+names(table_list_merged) <- names(table_list_clean)
+```
+
+```{r}
+table_list_merged[[ length(table_list_clean)+1 ]] <- 
+  rbind(table_list_clean[["B6J_CrlF"]],
+        table_list_clean[["B6J_Fue"]])
+names(table_list_merged)[ length(table_list_clean)+1 ] <- "B6J"
+
+
+table_list_merged[[ length(table_list_clean)+2 ]] <- 
+  rbind(table_list_clean[["CD1_1999_2010"]],
+        table_list_clean[["CD1_2010_2020"]])
+names(table_list_merged)[ length(table_list_clean)+2 ] <- "CD1"
+
+names(table_list_merged)
+```
+
+```{r}
+data4histo <- lapply(names(table_list_merged), 
+                     FUN=function(df_name){
+                       
+  df <- table_list_merged[[df_name]]
+  df_clean <- as.data.frame(
+    apply(data.frame(df[,2:3]), 
+          c(1,2), 
+          as.numeric))
+  rowmax <- apply(df_clean, 1, max)
+
+  # can be changed to pups_born or pups_beforeW
+  # xx <- rowmax
+  xx <- df_clean$pups_beforeW
+  support <- seq(0, max(xx)+1)
+
+  fitNB <- MASS::fitdistr(x = xx, 
+                          densfun = "negative binomial")
+  fitPois <- MASS::fitdistr(x = xx, 
+                          densfun = "poisson")
+  fitProb_NB <- dnbinom(support, 
+                        size=fitNB$estimate["size"], 
+                        mu=fitNB$estimate["mu"])
+  fitProb_Pois <- dpois(support, lambda=fitPois$estimate["lambda"])
+  
+  observed_values <- table(xx)
+  values <- sapply(
+    support, 
+    FUN = function(z){
+      ifelse(as.character(z) %in% names(observed_values), 
+             observed_values[as.character(z)], 
+             0)
+      }) 
+  names(values) <- support
+  
+  stopifnot(observed_values == values[names(observed_values)])
+  
+  freqs <- values/ sum(values)
+  df2plot <- data.frame(
+    support, 
+    values, 
+    freqs, 
+    fitted_Pois = fitProb_Pois,
+    fitted_NB = fitProb_NB,
+    strain = rep(df_name, length(support)),
+    nlitters = rep(nrow(df_clean), length(support)))
+  
+  return(df2plot)
+  #print(freqs)
+  #print(barplot(height = freqs))
+  # ggplot(df2plot, aes(x=support)) +
+  #   geom_bar(aes(y=freqs), stat="identity", width = 0.05) + 
+  #   geom_line(aes(y=fitted_Pois, color="Poisson fit")) + 
+  #   geom_line(aes(y=fitted_NB, color="NB fit")) +
+  #   labs(title = paste0("Strain: ",df_name),
+  #        caption = paste0("Number of litters: ", nrow(df_clean))
+  #           )
+  # 
+  # 
+})
+names(data4histo) <- names(table_list_merged)
+```
+
+```{r}
+chosen_strains <- c(
+  "2d2_LASC_V1",
+  "B6cBrd",
+  "B6D2F1",
+  "Balbc",
+  "Card9_KO",
+  "DBA2_J_Fue",
+  "FcRn",
+  # "NMRI",
+  # "CD1"
+  "B6J")
+# excluded NMRI and CD1 aas they are not looking as Poisson
+df4histo_chosen <- do.call(
+  "rbind",
+  data4histo[chosen_strains]) 
+names(data4histo)
+```
+
+```{r}
+library(tidyverse)
+library(hrbrthemes)
+library(viridis)
+library(forcats)
+library(plyr)
+
+df4histo_chosen$strain 
+df4histo_chosen <- arrange(df4histo_chosen, nlitters)
+# B6cBrd Balbc FcRn DBA2_J_Fue Card9_KO B6D2F1 B6J
+df4histo_chosen$strain <- plyr::revalue(df4histo_chosen$strain, 
+        c("B6cBrd"="B6 Albino ", 
+          "2d2_LASC_V1"="2d2",
+          "Balbc"="BALB/cJ", 
+          "FcRn"="FcRn",
+          "B6J"="C57BL/6J",
+          "DBA2_J_Fue"="DBA2J",
+          "Card9_KO"="Card9 KO",
+          "B6D2F1"="BD2F1 "
+          ))
+df4histo_chosen$strain <- reorder(df4histo_chosen$strain, 
+                                  df4histo_chosen$nlitters)
+
+fig4a <- df4histo_chosen %>%
+  ggplot( aes(x=support, color=strain, fill=strain)) +
+    geom_bar(aes(y=freqs), stat = "identity", width = 0.5) + 
+    scale_fill_viridis(discrete=TRUE) +
+    scale_color_viridis(discrete=TRUE) +
+    geom_line(aes(y=fitted_Pois), col = "black") + 
+    geom_line(aes(y=fitted_NB), col="red4") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(1, "lines"),
+      strip.text.x = element_text(size = 0)
+    ) +
+  xlab("") +
+  ylab("") + 
+  #labs(caption = paste0("Number of litters: ", nlitters))) +
+    #xlab("Number of pups in a litter") +
+    #ylab("Frequency") +
+    facet_wrap(~strain*nlitters, ncol = 4)
+
+fig4a_withlabels <- df4histo_chosen %>%
+  ggplot( aes(x=support, color=strain, fill=strain)) +
+    geom_bar(aes(y=freqs), stat = "identity", width = 0.5) + 
+    scale_fill_viridis(discrete=TRUE) +
+    scale_color_viridis(discrete=TRUE) +
+    geom_line(aes(y=fitted_Pois), col = "black") + 
+    geom_line(aes(y=fitted_NB), col="red4") +
+    theme_ipsum() +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(1, "lines"),
+      strip.text.x = element_text(size = 10)
+    ) +
+    xlab("Number of pups in a litter;  NB fit: red, Poison fit: black") +
+    ylab("Frequency") +
+    facet_wrap(~strain*nlitters, ncol = 4)
+
+fig4a_withlabels
+fig4a
+```
+
+
+
+
+```{r, eval = FALSE}
+ggsave(
+  fig4a, 
+  filename = "./figures/figsSupplementary/litter_size_histograms_nolabels.pdf", 
+  width = 8, height = 5)
+ggsave(
+  fig4a_withlabels, 
+  filename = "./figures/figsSupplementary/litter_size_histograms_wlabels.png", 
+  width = 8, height = 5)
+```

@@ -1,0 +1,117 @@
+---
+title: "Figure 2A"
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("animalBreeding")
+library(ggplot2)
+library(ggpubr)
+library(fields)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+source("../helper_function_fig2.R")
+```
+
+
+# Fig. 2A
+
+We calculate the minimal required number of breeding (Y-axis) needed to obtain 
+the desired number of offsprings (X-axis) with 90% confidence, using three methods: 
+
+1. The naïve ratio (see Suppl.), 
+
+2. the gold standard textbook model suggested by Festing, 
+
+3.  and our method denoted as Poisson.
+
+We use the following values for the fertility, average litter size and the required confidence:
+```{r, eval = TRUE, include=TRUE}
+effective_fertility <- 0.7
+average_litter_size <-  7
+required_confidence <-  0.9
+```
+We further calculate the difference in required breedings between 
+the textbook method (Festing) and our method, expressed in percentage 
+relative to the gold-standard method (Festing): 
+This is the number of "saved" breedings.
+
+
+```{r, eval = FALSE}
+# data generation, old names kept till the end, then changed
+req_pups <- seq(2,100,1)
+# see ../helper_function_fig2.R for the function
+data4b_prelim <- calc_data4fig_2A(
+    req_pups,
+    genotype_probability = 1, 
+    confiP = required_confidence, 
+    effertyP = effective_fertility, 
+    litmean = average_litter_size)
+
+# % relative to Festing
+animals_saved_fp_percent <- round(
+    100*(data4b_prelim$req_festing-data4b_prelim$req_poisson)/data4b_prelim$req_festing)
+
+# % relative to Poisson
+animals_saved_pf_percent <- round(
+    100*(data4b_prelim$req_festing-data4b_prelim$req_poisson)/data4b_prelim$req_poisson)
+
+data4b <- data.frame(
+    data4b_prelim, 
+    animals_saved_fp_percent, 
+    animals_saved_pf_percent)
+data2a <- data4b
+save(data2a, file = "data2a.Rdata")
+```
+
+
+
+```{r}
+load("data2a.Rdata")
+
+
+plot2A_hist <- ggplot(data2a,
+                      aes(x=req_pups, y=animals_saved_pf_percent))+
+  geom_bar(stat="identity",col="darkgrey")  + 
+  theme_pubr() + 
+  #theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + 
+  ylab("Percent saved \n animals")
+
+ggsave(plot2A_hist, 
+       filename = "plot2A_hist_annotated.pdf", width = 7, height = 5)
+
+plot2A_points <- 
+  ggplot(data = data2a , aes(x=req_pups, y = animals_saved_fp_percent)) + 
+  #geom_point(aes(y=req_br_festing50, col = "Festing 50%"), colour = "red", alpha=0.5, size=0.5) + 
+  #geom_line(aes(y=req_br_festing50, col = "Festing 50%"), alpha=0.3, size=0.3) + 
+  #geom_point(aes(y=req_br_festing90, col = "Festing 90%")) +
+  geom_point(aes(y= req_poisson, col = "poisson")) + 
+  geom_point(aes(y=req_festing, col = "festing")) + 
+  geom_point(aes(y=req_mendel, col = "mendel")) + 
+  labs(x="Required number of pups",
+       y = "Smallest number \n of breedings",
+       caption = "Mean litter size: 7,  Effective fertility: 70%",
+       title = "Model comparison for the smallest required number of breegins", colour = "") +
+  #labs(x='',y='',title='',colour = "Method") +
+  theme_pubr() +  theme(legend.position = c(0.85, 0.25))
+
+ggsave(plot2A_points, filename = "plot2A_points_annotated.pdf", width = 7, height = 7)
+
+
+plot2A <- ggarrange(
+  plotlist = list(plot2A_hist, plot2A_points), ncol = 1, 
+  heights = c(1,3))
+plot2A
+ggsave(plot2A, filename = "plot2A_annotated.pdf", width = 7, height = 7)
+save(plot2A_hist, plot2A_points, file = "gg_plots_2A.Rdata")
+```
+

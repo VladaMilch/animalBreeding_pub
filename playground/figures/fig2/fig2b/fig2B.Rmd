@@ -1,0 +1,105 @@
+---
+title: "Figure 2B"
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("animalBreeding")
+library(ggplot2)
+library(ggpubr)
+library(fields)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+library(ggplot2)
+library(directlabels)
+source("../helper_function_fig2.R")
+```
+
+
+# Fig. 2B
+
+The level plot reflects the minimal number of breedings (not litters) 
+required to achieve at least X offsprings (x axis) 
+with the success probability Y (y axis). 
+
+The average litter size here is set to 7, and the effective fertility to 70%.
+
+```{r, eval=TRUE}
+ff_B <- function(X, Y){
+  res <- breed_genotype(confidence_p = Y, 
+               effective_fertility_p = 0.7, 
+               genotypes_p = c(0.25,0.5,0.25), 
+               genotypes_N = c(X, 0, 0), 
+               litter_mean = 7, 
+               method = "poisson")
+  # cat(X)
+  # cat('\n')
+  # cat(Y)
+  # cat('\n')
+  # cat("####################")
+  # cat('\n')
+  # cat('\n')
+  return(res)
+}
+
+# required number of offsprings
+red_noffs <- seq(2,100,1) 
+
+# confidence grid
+confi_grid <- c(0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 
+                0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 
+                0.975, 0.98, 0.985, 0.99, 0.995, 
+                0.996, 0.997, 0.998, 0.999)
+
+```
+
+```{r, eval = FALSE}
+# warning! long! # set eval to FALSE later
+req_breedings <- sapply(red_noffs, function(noff){
+  sapply(confi_grid, function(cc){
+    ff_B(X=noff,Y=cc)
+  })
+})
+
+data2b <- cbind(
+  expand.grid(red_noffs, confi_grid), 
+  as.vector(t(req_breedings)))
+colnames(data2b) <- c("offsprings",  "confidence", "breedings")
+save(req_breedings, data2b, file = "data2b.Rdata")
+```
+
+
+```{r, warning=FALSE}
+load("data2b.Rdata")
+plot1 <- ggplot(data2b, 
+                aes(x = offsprings, y = confidence, z = breedings)) +
+  geom_contour(aes(colour=..level..)) + 
+  theme_pubr() +  
+  ggtitle("Required number of breedings for a setup with \n average litter 7 and average fertility 70%")+
+  xlab("desired number of offsprings (p=0.25)")+
+  ylab("success probability")
+
+my.dl <- list(box.color=NA, "draw.rects")
+plot2B <- direct.label(
+    plot1, 
+    list("far.from.others.borders","calc.boxes", "enlarge.box", "my.dl")) 
+
+plot2B
+ggsave(plot = plot2B, filename = "plot_2B_annotated.pdf")
+save(plot2B, file = "gg_plot_2B.Rdata")
+```
+
+Note: Contour plots perform smoothing on the function, and we may see less 
+"bumps" characteristic for small values 
+(because numbers of mice and breedings are integers), but it does not change the
+whole picture. Also, we are mostly interested in the large values of confidence,
+and there the grid is fine.

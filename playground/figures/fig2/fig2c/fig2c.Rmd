@@ -1,0 +1,85 @@
+---
+title: "Figure 2C"
+author: "Vlada Milchevskaya"
+#date: "11.11.20"
+output: 
+    prettydoc::html_pretty:
+        toc: true
+        theme: cayman
+        highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+library("animalBreeding")
+library(ggplot2)
+library(ggpubr)
+library(fields)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+library(directlabels)
+source("../helper_function_fig2.R")
+```
+
+
+
+# Fig. 2C
+
+Contour plot for the minimal number of breedings needed to obtain X animals 
+of genotype A and Y animals of genotype B, with the following parameters fixed:
+
+- Confidence: 90%
+ 
+- Litter mean: 7
+
+- Fertility: 70%
+
+- Probabilities of the genotypes A and B: 25%, 25%
+
+
+```{r}
+offsA = seq(2,100,2)
+offsB = seq(2,100,2)
+df <- expand.grid(offsA, offsB)
+ff_C <- function(nA, nB){
+  breed_genotype(
+    confidence_p = 0.9, 
+    effective_fertility_p = 0.7, 
+    genotypes_p = c(0.25, 0.5, 0.25), 
+    genotypes_N = c(nA, 0, nB), 
+    litter_mean = 7)
+}
+```
+
+```{r, eval = FALSE}
+breedingsB <- apply(df, 1, function(x)ff_C(nA = x[1],nB = x[2]))
+dfB <- cbind(df, breedingsB)
+breeM = matrix(breedingsB, nrow = 50, ncol = 50)
+#save(breedingsB, dfB, breeM, file = "data4c.Rdata")
+```
+
+```{r}
+load("data4c.Rdata")
+plot2c <- ggplot(dfB, aes(x = Var1, y = Var2, z = breedingsB)) +
+  geom_contour(aes(colour=..level..)) + theme_pubr() +  
+  ggtitle("Required number of breedings for a setup with \n average litter 7 and average fertility 70%")+
+  xlab("required number of offsprings of genotype A (p=0.25)")+
+  ylab("required number of offsprings of genotype B (p=0.25)") + 
+  scale_x_continuous(limits=c(0, 100), breaks = seq(0,100,25)) +
+  scale_y_continuous(limits=c(0, 100), breaks = seq(0,100,25)) 
+
+# deal with labels on the contour plot
+my.dl <- list(box.color=NA, "draw.rects")
+plot2C <- direct.label(plot2c, list("far.from.others.borders","calc.boxes", "my.dl")) 
+plot2C
+
+ggsave(plot = plot2C, filename = "plot_2C_annotated.pdf", width = 7, height = 7)
+save(plot2C, file = "gg_plot_2C.Rdata")
+```
+
+
+
+
+

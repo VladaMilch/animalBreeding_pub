@@ -24,7 +24,7 @@ source("../fig4_other/helper_functions.R")
 
 There are several options for each figure suggestion.
 
-# Fig. 2 A
+# Fig. 2A
 
 The level plot reflects the minimal number of breedings (not litters) required to achieve at least X offsprings (x axis) with the success probability Y (y axis). 
 
@@ -472,6 +472,7 @@ plot2Dann <- plot2D +   labs(
 ggsave(plot2Dann, file = "plot2D_annotated.pdf")
 ```
 
+# Wrap-up 
 
 ```{r}
 remove_labels_legend <- theme(
@@ -485,7 +486,7 @@ remove_labels_legend <- theme(
   title = element_blank()
   )
 
-emply_plot <- ggplot() + theme_void()
+empty_plot <- ggplot() + theme_void()
 
 plot2B_hist_empty <- plot2B_hist + remove_labels_legend
 plot2B_contour_empty <- plot2B_contour + theme(
@@ -510,7 +511,7 @@ bb
 left_panel <- ggarrange(
   plotlist = list(
       bb,
-      emply_plot,
+      empty_plot,
       plot2A + theme(
   #axis.ticks.x=element_blank(),
   axis.title.y=element_blank(),
@@ -525,16 +526,16 @@ left_panel <- ggarrange(
 
 right_panel <- ggarrange(
   plotlist = list(
-    emply_plot,
+    empty_plot,
       plot2C_empty, 
-      emply_plot,
+      empty_plot,
       plot2D_empty), 
   ncol=1, 
   nrow = 4,
   heights = c(0.1,1,0.3,1.6))
           #ncol=1)
 
-figure2 <- ggarrange(left_panel, emply_plot, right_panel, ncol=3, 
+figure2 <- ggarrange(left_panel, empty_plot, right_panel, ncol=3, 
                      widths = c(1.6,0.2,1))
 figure2
 ggsave(figure2, file = "Figure_2_nolabels.pdf",height = 210, width = 297, units = "mm")

@@ -26,8 +26,10 @@ head(data2plot)
 
 data2plot$variable <- as.factor(data2plot$variable)
 pp <- ggplot(dat,aes(x=animals_born)) + 
-  geom_bar(aes(y=b3), stat="identity", fill = "gray80", alpha=0.5, col = "gray10") +
-  geom_bar(aes(y=b10), stat="identity", fill = "gray20", alpha=0.5, col = "gray10") +
+  geom_bar(aes(y=b3), stat="identity", fill = "gray80", 
+           alpha=0.5, col = "gray10") +
+  geom_bar(aes(y=b10), stat="identity", fill = "gray20", 
+           alpha=0.5, col = "gray10") +
   theme_pubr() + 
   #theme(axis.title.x = element_blank(), axis.text.x = element_blank()) + 
   xlab("Animals born") + ylab("Probability")
