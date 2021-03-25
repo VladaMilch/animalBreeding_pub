@@ -7,6 +7,17 @@
 
 ## installation 
 
+There is an install_github from the devtools package, to install packages directly from github:
+
 ```{r}
-install_github("VladaMilch/animalBreeding_pub/animalBreeding")
+# install.packages("devtools")
+devtools::install_github("VladaMilch/animalBreeding_pub/animalBreeding")
+```
+
+## usage
+
+See the vignette! =) 
+
+```{r}
+vignettes("animalBreeding")
 ```
