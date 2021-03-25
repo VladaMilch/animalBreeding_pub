@@ -2,12 +2,23 @@
 
 ## animalBreeding 
 
-- is a package, will contain various models to calculate the minimal required number of breedings, 
-in order to guarantee a required number of offsprings with a certain probability. 
+- is a package, sample size calculation for an animal breeding experiment
 
 
-## playground 
-- drafts and simulations
+## installation 
 
-## external 
-- literature, external data (from Thorsten Buch) or code (from Achim)
+There is an install_github from the devtools package, to install packages directly from github:
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("VladaMilch/animalBreeding_pub/animalBreeding")
+```
+
+## usage
+
+See the vignette! =) 
+
+```{r}
+library(animalBreeding)
+vignettes("animalBreeding")
+```
