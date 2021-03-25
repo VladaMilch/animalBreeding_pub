@@ -6,10 +6,12 @@ breedingMulti <- function(
   genotypes_p,
   genotypes_N,
   genotype_names = NULL,
+  strain = "BALB/cJ",
   if_balanced_sex = NULL,
   if_onesex = NULL,
   if_unimportant_sex = NULL,
   litter_mean,
+  doof1_obj = NULL,
   method = "poisson"
 ){
   
@@ -24,10 +26,12 @@ breedingMulti <- function(
     genotypes_p = genotypes_p,
     genotypes_N = genotypes_N,
     genotype_names = genotype_names,
+    strain = strain,
     if_balanced_sex = if_balanced_sex,
     if_onesex = if_onesex,
     if_unimportant_sex = if_unimportant_sex,    
     litter_mean = litter_mean,
+    doof1_obj = doof1_obj, 
     method = method)
   
   attr(obj, "class") <- "breedingMulti"
@@ -39,8 +43,7 @@ breedingMulti <- function(
 #   genotypes_p = c(0,1), genotypes_N = c(0,10), 
 #   litter_mean = 7)
 
-
-print.breedingMulti <- function(breObj){
-  x = breObj$required_breedings
-  print(x)
-}
+# print.breedingMulti <- function(breObj){
+#   x = breObj$required_breedings
+#   print(x)
+# }

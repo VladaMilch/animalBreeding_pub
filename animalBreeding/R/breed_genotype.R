@@ -15,7 +15,7 @@ breed_genotype <- function(
     litter_sd = NULL,
     binomial_p=NULL,
     offsprings_n_sample = NULL, # should be a large vector, n of offs for a single mouse
-    method = "poisson"
+    method = "poisson" # object of breedingClass
 ){
     stopifnot(length(genotypes_p)==length(genotypes_N))
     stopifnot(sum(genotypes_p)==1)
@@ -32,6 +32,7 @@ breed_genotype <- function(
     stopifnot(is.null(binomial_p) || (binomial_p > 0 & binomial_p <=1))
     
     stopifnot(method %in% c("festing", "binomial", "empirical", "poisson"))
+    
     
     # object for the distribution of offsprings for 1 mother
     if(method=="poisson"){
@@ -65,14 +66,31 @@ breed_genotype <- function(
           message="No genotype-specific calculation for method festing")
     }
     
-    res <- conv_k_search(  
+
+    rebre <- conv_k_search(  
       confidence_p=confidence_p,
       doof1=doof1,
       genotypes_N=genotypes_N,
       genotypes_p=genotypes_p)    
-    return(res)
     
     
+    ################# class  ################
+    
+    breesetup <- breedingMulti(
+      required_breedings = rebre,
+      confidence_p = confidence_p, 
+      fertility_p = effective_fertility_p, 
+      genotypes_p = genotypes_p, 
+      genotypes_N = genotypes_N, 
+      litter_mean = litter_mean, 
+      doof1_obj = doof1,
+      method = "poisson")
+    
+    ################# class  ################
+    
+    
+    return(breesetup)
+
 }
 
 generate_poisson_doof1 <- function(litter_mean, 

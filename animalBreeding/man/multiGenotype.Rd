@@ -2,14 +2,16 @@
 % Please edit documentation in R/multiGenotype.R
 \name{multiGenotype}
 \alias{multiGenotype}
-\title{Optimal number of breedings, multiple genotype setup}
+\title{Optimal number of breedings, multiple genotypes setup}
 \usage{
 multiGenotype(
   confidence_p = 0.9,
   birth_days = 3,
   genotypes_p = c(0.25, 0.5, 0.25),
   genotypes_N = c(0, 0, 10),
+  genotype_names = NULL,
   sex_distribution = c("unimportant", "all one sex", "balanced"),
+  strain = "Festing",
   litter_mean = NULL
 )
 }
@@ -25,6 +27,8 @@ of the animal}
 
 \item{genotypes_N}{required number of offsprings of the respective genotypes}
 
+\item{genotype_names}{names of the genotypes, should be the same length as genotypes_p and genotypes_N}
+
 \item{sex_distribution}{takes values "unimportant", "all one sex", "balanced"; 
 reflects the distribution of sexes among the offsprings: If "balanced", 
 equal numbers of male and female offspring should be born for each genotype; 
@@ -32,7 +36,13 @@ if "all one sex", all of the required offsprings should be either male or female
 if "unimportant", the offsprings of any sex suffice. 
 Female and male offpsings are born with the same frequency (0.5).}
 
-\item{litter_mean}{average number of offpring for one animal}
+\item{strain}{mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
+BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+SJL/J, 
+Festing (when the strain is unknown, use "Festing" as a general 
+textbook example)}
+
+\item{litter_mean}{average number of offsprings in a single litter}
 }
 \value{
 

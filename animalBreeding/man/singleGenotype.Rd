@@ -10,6 +10,7 @@ singleGenotype(
   birth_days,
   n_offsprings,
   litter_mean = NULL,
+  strain = "Festing",
   method = "poisson"
 )
 }
@@ -24,6 +25,12 @@ of the animal}
 \item{n_offsprings}{the desired number of offsprings}
 
 \item{litter_mean}{average number of offpring for one animal}
+
+\item{strain}{mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
+BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+SJL/J, 
+Festing (when the strain is unknown, use "Festing" as a general 
+textbook example)}
 
 \item{method}{takes values "festing" or "poisson"}
 }

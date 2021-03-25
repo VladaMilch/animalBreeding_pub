@@ -1,0 +1,14 @@
+strain_name  fertility
+129/SvJa  0.75
+A/J  0.65
+AKR/J  0.84
+BALB/cJ  0.47
+C3H/HeJ  0.86
+C3H/HeOuJ  0.99
+C56BL/6J  0.84
+C57_BL/10SnJ  0.67
+CBA/CaJ  0.96
+DBA/2J  0.75
+FVB/N  0.90
+SJL/J  0.72
+Festing 0.795

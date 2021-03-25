@@ -8,17 +8,21 @@
 #' of the animal
 #' @param n_offsprings the desired number of offsprings
 #' @param litter_mean average number of offpring for one animal
+#' @param strain mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
+#' BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+#' SJL/J, 
+#' Festing (when the strain is unknown, use "Festing" as a general 
+#' textbook example)
 #' @param method takes values "festing" or "poisson"
 #'
 #' @return
 #' @export
-#'
-#' @examples
 singleGenotype <- function(
   confidence_p = 0.9,
   birth_days,
   n_offsprings,
   litter_mean = NULL,
+  strain = "Festing",
   method = "poisson"
 ){
   # arguments needed for every function
@@ -29,11 +33,14 @@ singleGenotype <- function(
   try(if(!(birth_days %in% c(1,2,3,4) | (birth_days <= 1 & birth_days > 0) )) 
     stop("birth_days can only take values 1, 2, 3 or 4"))
   
-  if (birth_days < 0){
+  # birthday --> effective_fertility_p
+  if (birth_days < 1){
     effective_fertility_p = birth_days
-  }else{ # persentages from the Festing book, Table 3.11
-    effective_fertility_p = (cumsum(c(13.4, 13.4, 35.0, 17.7))/100)[birth_days]
-    }
+  }else{ # percentages from the Festing book, Table 3.11
+    effective_fertility_p = strain_f_adjust(
+      birth_days = birth_days, 
+      strain = strain)
+  }
   
   if(method=="festing"){
     litter_sd = 2.5

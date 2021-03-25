@@ -79,7 +79,7 @@ test_that("Calculation with 1 genotype agrees with
           genotypes_p = c(1,0), 
           genotypes_N = c(100,0),
           litter_mean = 7, 
-          method = "poisson"),
+          method = "poisson")$required_breedings,
         calculate_needed_breedings(
             confidence_p = 0.9, 
             effective_fertility_p = 0.6, 

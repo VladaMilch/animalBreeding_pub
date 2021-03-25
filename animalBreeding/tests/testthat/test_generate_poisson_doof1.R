@@ -1,6 +1,6 @@
 require(testthat)
 require(distr)
-require(MASS)
+#require(MASS)
 
 test_that("Fails gracefully",{
     # all parameters checked before
