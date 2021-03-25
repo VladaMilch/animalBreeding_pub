@@ -58,7 +58,7 @@ n_breedings <- multiGenotype(
   birth_days = 3, 
   genotypes_N = c(0,0,10), 
   genotypes_p = c(0.25, 0.5, 0.25),
-  sex_distribution = "unimportant", 
+  sex_distribution = "all one sex", 
   strain = "FVB/N",
   litter_mean = 6)
 
