@@ -20,5 +20,5 @@ See the vignette! =)
 
 ```{r}
 library(animalBreeding)
-vignettes("animalBreeding")
+vignette("animalBreeding")
 ```
