@@ -19,5 +19,6 @@ devtools::install_github("VladaMilch/animalBreeding_pub/animalBreeding")
 See the vignette! =) 
 
 ```{r}
+library(animalBreeding)
 vignettes("animalBreeding")
 ```
