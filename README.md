@@ -17,7 +17,7 @@ library(animalBreeding)
 
 ## Usage
 
-See the vignette in  ........ or 
+See the vignette in  animalBreeding/doc/my-vignette.html or try these examples: 
 
 ### Offsprings of a single genotype
 
