@@ -12,7 +12,8 @@ multiGenotype(
   genotype_names = NULL,
   sex_distribution = c("unimportant", "all one sex", "balanced"),
   strain = "Festing",
-  litter_mean = NULL
+  litter_average = NULL,
+  effective_fertility = NULL
 )
 }
 \arguments{
@@ -36,18 +37,39 @@ if "all one sex", all of the required offsprings should be either male or female
 if "unimportant", the offsprings of any sex suffice. 
 Female and male offpsings are born with the same frequency (0.5).}
 
-\item{strain}{mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
-BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+\item{strain}{mouse strains, currently available are: 
+129/SvJa, 
+A/J, 
+AKR/J, 
+BALB/cJ, 
+C3H/HeJ, 
+C3H/HeOuJ, 
+C56BL/6J, 
+C57_BL/10SnJ, 
+CBA/CaJ, 
+DBA/2J, 
+FVB/N 
 SJL/J, 
 Festing (when the strain is unknown, use "Festing" as a general 
 textbook example)}
 
-\item{litter_mean}{average number of offsprings in a single litter}
+\item{litter_average}{average number of offsprings in a single litter}
 }
 \value{
-
+object of the breedingMulti class
 }
 \description{
 Calculates the smallest number of breedings needed to yield a desired number 
 of offsprings of multiple genotypes with a given probability of success
+}
+\examples{
+multiGenotype(
+  confidence_p = 0.9, 
+  birth_days = 3, 
+  genotypes_p = c(0.25, 0.5, 0.25), 
+  genotypes_N = c(10,0,10), 
+  sex_distribution = "unimportant",
+  litter_average = 7,
+  strain = "C56BL/6J")
+
 }

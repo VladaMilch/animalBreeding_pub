@@ -25,7 +25,7 @@ calculate_needed_breedings_poisson <-   function(
     freqs <- freqs_r/sum(freqs_r)
     supp1 = as.numeric(c(0, seq(1,round(4*litter_mean))))
     prob1 <- c(1-effective_fertility_p, effective_fertility_p*freqs)
-    stopifnot(sum(prob1)==1)
+    stopifnot(   abs(1-sum(prob1)) < 0.1^5   )
     
     doof1 <- distr::DiscreteDistribution(supp = supp1, prob = prob1)
     res <- conv_k_search(

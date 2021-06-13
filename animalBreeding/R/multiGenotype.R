@@ -17,14 +17,36 @@
 #' if "all one sex", all of the required offsprings should be either male or female
 #' if "unimportant", the offsprings of any sex suffice. 
 #' Female and male offpsings are born with the same frequency (0.5).
-#' @param litter_mean average number of offsprings in a single litter
-#' @param strain mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
-#' BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+#' @param litter_average average number of offsprings in a single litter
+#' @param strain mouse strains, currently available are: 
+#' 129/SvJa, 
+#' A/J, 
+#' AKR/J, 
+#' BALB/cJ, 
+#' C3H/HeJ, 
+#' C3H/HeOuJ, 
+#' C56BL/6J, 
+#' C57_BL/10SnJ, 
+#' CBA/CaJ, 
+#' DBA/2J, 
+#' FVB/N 
 #' SJL/J, 
 #' Festing (when the strain is unknown, use "Festing" as a general 
 #' textbook example)
 #'
 #' @return
+#' object of the breedingMulti class
+#' 
+#' @examples 
+#' multiGenotype(
+#'   confidence_p = 0.9, 
+#'   birth_days = 3, 
+#'   genotypes_p = c(0.25, 0.5, 0.25), 
+#'   genotypes_N = c(10,0,10), 
+#'   sex_distribution = "unimportant",
+#'   litter_average = 7,
+#'   strain = "C56BL/6J")
+#' 
 #' @export
 multiGenotype <- function(
   confidence_p = 0.9,
@@ -34,13 +56,36 @@ multiGenotype <- function(
   genotype_names = NULL,
   sex_distribution = c("unimportant", "all one sex", "balanced"),
   strain="Festing", # http://www.informatics.jax.org/silver/tables/table4-1.shtml
-  litter_mean = NULL
+  litter_average = NULL,
+  effective_fertility = NULL
 ){
   
   ################# integrity checks ###############
+
   # confidence_p
-  if(!(confidence_p > 0 & confidence_p < 1)){
-    stop("Confidence should be between 0 and 1.\n")
+  stopifnot(confidence_p < 1 & confidence_p > 0)
+  # birth_days
+  try(
+    if(!( (is.wholenumber(birth_days) & birth_days > 0) ))
+    {stop("birth_days can only take whole positive values (1,2,3,...) \n")} 
+  )
+  
+  # strain --> litter mean and fertility
+  if (strain == "manual"){
+    effective_fertility_p = effective_fertility
+    litter_mean = litter_average
+    # do not do day adjustment here! so that to control the function output.. 
+  }else{ # percentages from the Festing book, Table 3.11
+    strain_params = strain_f_adjust(
+      birth_days = birth_days, 
+      strain = strain)
+    effective_fertility_p = strain_params$fertility
+    litter_mean = strain_params$lit_mean
+    try( if(!is.null(litter_average) | !is.null(effective_fertility))
+      warning("Litter mean and effective fertility parameters are overwritten 
+              because a particular mouse strain is chosen. If the input 
+              parameters should be used, choose strain='manual'.")
+    )
   }
   # genotypes_p
   if(!(all(genotypes_p >=0) & sum(genotypes_p)==1)){
@@ -59,18 +104,6 @@ multiGenotype <- function(
     stop("Average number of pups per litter should be a positive number.\n")
   }
   
-  # birthday value is valid
-  if(!(birth_days %in% c(1,2,3,4) | (birth_days <= 1 & birth_days > 0) )){
-    stop("birth_days can only take values 1, 2, 3 or 4")}
-  
-  # birthday --> effective_fertility_p
-  if (birth_days < 1){
-    effective_fertility_p = birth_days
-  }else{ # percentages from the Festing book, Table 3.11
-    effective_fertility_p = strain_f_adjust(
-      birth_days = birth_days, 
-      strain = strain)
-  }
   
     
   ################# calculation  ################

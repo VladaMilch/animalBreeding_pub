@@ -87,24 +87,6 @@ test_that("Calculation with 1 genotype agrees with
             litter_mean = 7, 
             method = "poisson")
         )
-    # Binomial model won't be used         
-    # expect_equal(
-    #     breed_genotype(
-    #       confidence_p = 0.9, 
-    #       effective_fertility_p = 0.6,
-    #       genotypes_p = c(1,0), 
-    #       genotypes_N = c(100,0),
-    #       litter_mean = 7, 
-    #       binomial_p = 0.4,
-    #       method = "binomial"),
-    #     calculate_needed_breedings(
-    #         confidence_p = 0.9, 
-    #         effective_fertility_p = 0.6, 
-    #         binomial_p = 0.4,
-    #         n_needed = 100, 
-    #         litter_mean = 7, 
-    #         method = "binomial")
-    #     )
 })
 
 

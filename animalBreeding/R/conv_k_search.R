@@ -8,9 +8,10 @@ conv_k_search <- function(
   largest_step_size = 32 # must be 2^
 ){
   # choose the starting k wisely: Needed for large breedings
-  mm = max(median(doof1@r(100)), 1) #sometimes median=0...
-  k = max(1, 
-          floor(sum(genotypes_N)/mm) - largest_step_size)
+  mm = max(median(doof1@r(10000)), 1) #sometimes median=0...
+  # k = max(1, 
+  #         floor(sum(genotypes_N)/mm) - largest_step_size)
+  k=1
   step_size = largest_step_size
 
   # 1 breeding is enough (k=1)
@@ -20,7 +21,7 @@ conv_k_search <- function(
                                genotypes_p=genotypes_p)
   if(confi_low >= confidence_p)
   {
-    return(1)
+    return(k)
   }
   
   # more than 1 breedings needed (k>1)

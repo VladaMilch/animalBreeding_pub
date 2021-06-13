@@ -7,11 +7,12 @@ of offsprings of a single genotype with a given probability of success}
 \usage{
 singleGenotype(
   confidence_p = 0.9,
-  birth_days,
+  birth_days = 4,
   n_offsprings,
-  litter_mean = NULL,
-  strain = "Festing",
-  method = "poisson"
+  strain = "manual",
+  method = "poisson",
+  litter_average = NULL,
+  effective_fertility = NULL
 )
 }
 \arguments{
@@ -24,15 +25,30 @@ of the animal}
 
 \item{n_offsprings}{the desired number of offsprings}
 
-\item{litter_mean}{average number of offpring for one animal}
-
-\item{strain}{mouse strains, currently available are: 129/SvJa, A/J, AKR/J, 
-BALB/cJ, C3H/HeJ, C3H/HeOuJ, C56BL/6J, C57_BL/10SnJ, CBA/CaJ, DBA/2J, FVB/N 
+\item{strain}{mouse strains, currently available are:
+129/SvJa,   
+A/J,   
+AKR/J, 
+BALB/cJ,   
+C3H/HeJ,   
+C3H/HeOuJ,   
+C56BL/6J,   
+C57_BL/10SnJ,   
+CBA/CaJ,   
+DBA/2J,   
+FVB/N, 
 SJL/J, 
 Festing (when the strain is unknown, use "Festing" as a general 
-textbook example)}
+textbook example) and "manual" (to set the strain parameters - litter mean 
+and effective fertility - manually)}
 
 \item{method}{takes values "festing" or "poisson"}
+
+\item{litter_average}{only used when method="manual", the average number 
+of pups in a litter (litter mean)}
+
+\item{effective_fertility}{only used when method="manual", the probability 
+that withing the required time period a mouse will produce at least one pup}
 }
 \value{
 
@@ -40,4 +56,19 @@ textbook example)}
 \description{
 Calculates the smallest number of breeding needed to yield a desired number 
 of offsprings of a single genotype with a given probability of success
+}
+\examples{
+singleGenotype(confidence_p = 0.9, 
+              n_offsprings = 16, 
+              strain = "FVB/N")
+# shorter time period when offspring should be born
+singleGenotype(confidence_p = 0.9, 
+              birth_days = 3,
+              n_offsprings = 16, 
+              strain = "FVB/N")  
+# manual input of strain parameters   
+singleGenotype(confidence_p = 0.9, 
+              birth_days = 3,
+              n_offsprings = 16, 
+              strain = "manual") 
 }
