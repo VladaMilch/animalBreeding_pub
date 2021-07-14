@@ -7,6 +7,12 @@
 #' alternatibely, a number between 0 and 1 specifying the effective fertility 
 #' of the animal
 #' @param n_offsprings the desired number of offsprings
+#' @param sex_distribution takes values "unimportant", "all one sex", "balanced"; 
+#' reflects the distribution of sexes among the offsprings: If "balanced", 
+#' equal numbers of male and female offspring should be born for each genotype; 
+#' if "all one sex", all of the required offsprings should be either male or female
+#' if "unimportant", the offsprings of any sex suffice. 
+#' Female and male offpsings are born with the same frequency (0.5).
 #' @param strain mouse strains, currently available are:   
 #' 129/SvJa,   
 #' A/J,   
@@ -48,61 +54,32 @@
 singleGenotype <- function(
   confidence_p = 0.9,
   birth_days = 4,
+  desired_genotype_p = 1, 
   n_offsprings,
+  sex_distribution = c("unimportant", "all one sex", "balanced"),
   strain = "manual",
   method = "poisson",
   litter_average = NULL,
   effective_fertility = NULL
 ){
-  # arguments needed for every function
-  stopifnot(confidence_p < 1 & confidence_p > 0)
-  stopifnot(is.wholenumber(n_offsprings) & n_offsprings > 0)
-  stopifnot(method %in% c("festing", "poisson"))
-  try(
-    if(!( (is.wholenumber(birth_days) & birth_days > 0) ))
-    {stop("birth_days can only take whole positive values (1,2,3,...) \n")} 
-  )
-  
-  # birthday --> effective_fertility_p
-  if (strain == "manual"){
-    effective_fertility_p = effective_fertility
-    litter_mean = litter_average
-    # do not do day adjustment here! so that to control the function output.. 
-  }else{ # percentages from the Festing book, Table 3.11
-    strain_params = strain_f_adjust(
-      birth_days = birth_days, 
-      strain = strain)
-    effective_fertility_p = strain_params$fertility
-    litter_mean = strain_params$lit_mean
-    try( if(!is.null(litter_average) | !is.null(effective_fertility))
-      warning("Litter mean and effective fertility parameters are overwritten 
-              because a particular mouse strain is chosen. If the input 
-              parameters should be used, choose strain='manual'.")
-    )
-  }
-  
-  if(method=="festing"){
-    litter_sd = 2.5
+  if(desired_genotype_p==1){
+    genotypes_p_current <- c(1)
+    genotypes_N_current <- n_offsprings
+    
   }else{
-    litter_sd = NULL
+    genotypes_p_current <- c(desired_genotype_p, 1-desired_genotype_p)
+    genotypes_N_current <- c(n_offsprings, 0)
   }
   
-  
-  # add?? makes it quite ugly then..
-  # # sex_distribution
-  # stopifnot(
-  #   sex_distribution %in% c("unimportant", "all one sex", "balanced")
-  # )
-  
-  
-  
-  nbre <- calculate_needed_breedings(
+  nbre <- multiGenotype(
     confidence_p = confidence_p, 
-    effective_fertility_p = effective_fertility_p,
-    n_needed = n_offsprings, 
-    litter_mean = litter_mean,
-    litter_sd = litter_sd,
-    method = method)
+    birth_days = birth_days, 
+    genotypes_p = genotypes_p_current, 
+    genotypes_N = genotypes_N_current, 
+    sex_distribution = sex_distribution, 
+    strain = strain, 
+    litter_average = litter_average, 
+    effective_fertility = effective_fertility)
   
   return(nbre)
 }

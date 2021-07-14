@@ -8,7 +8,9 @@ of offsprings of a single genotype with a given probability of success}
 singleGenotype(
   confidence_p = 0.9,
   birth_days = 4,
+  desired_genotype_p = 1,
   n_offsprings,
+  sex_distribution = c("unimportant", "all one sex", "balanced"),
   strain = "manual",
   method = "poisson",
   litter_average = NULL,
@@ -24,6 +26,13 @@ alternatibely, a number between 0 and 1 specifying the effective fertility
 of the animal}
 
 \item{n_offsprings}{the desired number of offsprings}
+
+\item{sex_distribution}{takes values "unimportant", "all one sex", "balanced"; 
+reflects the distribution of sexes among the offsprings: If "balanced", 
+equal numbers of male and female offspring should be born for each genotype; 
+if "all one sex", all of the required offsprings should be either male or female
+if "unimportant", the offsprings of any sex suffice. 
+Female and male offpsings are born with the same frequency (0.5).}
 
 \item{strain}{mouse strains, currently available are:
 129/SvJa,   

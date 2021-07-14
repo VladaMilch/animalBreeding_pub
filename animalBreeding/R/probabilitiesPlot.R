@@ -1,8 +1,21 @@
 #' Expected total number of animals born in a breeding setup
 #'
-#' @param breedingObj object created by multiGenotype function
+#' @param breedingObj object created by singleGenotype or multiGenotype function
 #'
-#' @return
+#' @return a ggplot with the number of matings on the X axis and the 
+#' corresponding confidence in the successful breeding outcome on the Y axis
+#' 
+#' @examples 
+#' breObj <- multiGenotype(
+#'   confidence_p = 0.9, 
+#'   birth_days = 3, 
+#'   genotypes_p = c(0.25, 0.5, 0.25), 
+#'   genotypes_N = c(10,0,10), 
+#'   sex_distribution = "unimportant",
+#'   litter_average = 7,
+#'   strain = "C56BL/6J")
+#' probabilitiesPlot(breObj)
+#' 
 #' @export
 probabilitiesPlot <- function(breedingObj){
   kk = breedingObj$required_breedings
